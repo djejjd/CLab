@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/warren/projects/CLionProjects/CLab/Lab01/OutputResult.c
+OutputResult.h
+/home/warren/projects/CLionProjects/CLab/Lab01/OutputResult.h
+
+/home/warren/projects/CLionProjects/CLab/Lab01/OutputResult.h
+RegexpToNFA.h
+/home/warren/projects/CLionProjects/CLab/Lab01/RegexpToNFA.h
+
+/home/warren/projects/CLionProjects/CLab/Lab01/RegexpToNFA.h
+stdio.h
+-
+

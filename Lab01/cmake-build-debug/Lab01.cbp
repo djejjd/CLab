@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Lab01"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Lab01">
+				<Option output="/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Lab01" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/warren/projects/CLionProjects/CLab/Lab01/."/>
+					<Add directory="/usr/include/c++/6"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/6"/>
+					<Add directory="/usr/include/c++/6/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lab01"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Lab01/fast">
+				<Option output="/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Lab01" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/warren/projects/CLionProjects/CLab/Lab01/."/>
+					<Add directory="/usr/include/c++/6"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/6"/>
+					<Add directory="/usr/include/c++/6/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lab01/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/NFAFragmentStack.c">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/NFAFragmentStack.h">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/OutputResult.c">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/OutputResult.h">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/RegexpToNFA.cplproj">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/RegexpToNFA.h">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/RegexpToNFA.puo">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/RegexpToPost.c">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/RegexpToPost.h">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/input1.txt">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/input2.txt">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/input3.txt">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/input4.txt">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/input5.txt">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/input6.txt">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/input7.txt">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/input8.txt">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/main.c">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/makefile">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/output1.txt">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/output2.txt">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/output3.txt">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/output4.txt">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/output5.txt">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/output6.txt">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/output7.txt">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/output8.txt">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/sonar-project.properties">
+			<Option target="Lab01"/>
+		</Unit>
+		<Unit filename="/home/warren/projects/CLionProjects/CLab/Lab01/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
