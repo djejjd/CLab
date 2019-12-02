@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/NFAFragmentStack.c" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/NFAFragmentStack.h" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/OutputResult.c" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/RegexpToNFA.h" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/RegexpToPost.c" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/RegexpToPost.h" charset="GBK" />
     <file url="file://$PROJECT_DIR$/main.c" charset="GBK" />
   </component>
 </project>

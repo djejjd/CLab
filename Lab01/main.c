@@ -6,14 +6,14 @@
 
 NFAFragmentStack FragmentStack;	// 栈。用于储存 NFA 片段
 
-char* regexp = "ab";		// 例 1
-// char* regexp = "a|b";	// 例 2
+//char* regexp = "ab";		// 例 1
+//char* regexp = "a|b";	// 例 2
 // char* regexp = "a*";		// 例 3
 // char* regexp = "a?";		// 例 4
 // char* regexp = "a+";		// 例 5
 // char* regexp = "a(a|1)*";// 例 6
 // char* regexp = "(aa|b)*a(a|bb)*";// 例 7
-// char* regexp = "(a|b)*a(a|b)?"; 	// 例 8
+ char* regexp = "(a|b)*a(a|b)?"; 	// 例 8
 
 char regexp_ci[256];
 
@@ -139,31 +139,89 @@ NFAState* post2nfa(char *postfix)
 				PushNFAFragment(&FragmentStack, fm);
 				break;
 			case '|':	// 构造选择 NFA 片段
-				
-				//
-				// TODO: 在此添加代码
-				//
-								
-				break;
+
+			    // 将片段1和片段2通过ε转换与开始状态连接
+                fragment2 = PopNFAFragment(&FragmentStack);
+                fragment1 = PopNFAFragment(&FragmentStack);
+			    NewStartState = CreateNFAState();
+			    NewStartState->Transform = VoidTrans;
+			    NewStartState->Next1 = fragment1.StartState;
+			    NewStartState->Next2 = fragment2.StartState;
+			    NewStartState->AcceptFlag = 0;
+
+			    // 将片段1和片段2通过ε转换与终止状态连接
+			    NewAcceptState = CreateNFAState();
+			    NewAcceptState->AcceptFlag = 1;
+			    fragment1.AcceptState->AcceptFlag = 0;
+                fragment1.AcceptState->Transform = VoidTrans;
+                fragment1.AcceptState->Next1 = NewAcceptState;
+
+                fragment2.AcceptState->AcceptFlag = 0;
+                fragment2.AcceptState->Transform = VoidTrans;
+                fragment2.AcceptState->Next1 = NewAcceptState;
+
+                // 调用 MakeNFAFragment 函数生成一个新的 NFA 片段, 并入栈
+                fm = MakeNFAFragment(NewStartState, NewAcceptState);
+                PushNFAFragment(&FragmentStack, fm);
+
+                break;
 			case '*':	// 构造星号 NFA 片段
-				
-				//
-				// TODO: 在此添加代码
-				//
-								
+			    NewStartState = CreateNFAState();
+                NewStartState->AcceptFlag = 0;
+                NewAcceptState = CreateNFAState();
+                NewAcceptState->AcceptFlag = 1;
+                fragment = PopNFAFragment(&FragmentStack);
+
+                NewStartState->Transform = VoidTrans;
+			    NewStartState->Next1 = fragment.StartState;
+			    NewStartState->Next2 = NewAcceptState;
+
+			    fragment.AcceptState->Transform = VoidTrans;
+			    fragment.AcceptState->AcceptFlag = 0;
+			    fragment.AcceptState->Next1 = NewAcceptState;
+			    fragment.AcceptState->Next2 = fragment.StartState;
+
+                // 调用 MakeNFAFragment 函数生成一个新的 NFA 片段, 并入栈
+                fm = MakeNFAFragment(NewStartState, NewAcceptState);
+                PushNFAFragment(&FragmentStack, fm);
+
 				break;
 			case '?':	// 构造问号 NFA 片段
-				
-				//
-				// TODO: 在此添加代码
-				//
-								
+
+				fragment = PopNFAFragment(&FragmentStack);
+				NewStartState = CreateNFAState();
+				NewStartState->AcceptFlag = 0;
+				NewAcceptState = CreateNFAState();
+				NewAcceptState->AcceptFlag = 1;
+
+				NewStartState->Transform = VoidTrans;
+				NewStartState->Next1 = fragment.StartState;
+				NewStartState->Next2 = NewAcceptState;
+
+				fragment.AcceptState->AcceptFlag = 0;
+				fragment.AcceptState->Transform = VoidTrans;
+				fragment.AcceptState->Next1 = NewAcceptState;
+
+                // 调用 MakeNFAFragment 函数生成一个新的 NFA 片段, 并入栈
+				fm = MakeNFAFragment(NewStartState, NewAcceptState);
+				PushNFAFragment(&FragmentStack, fm);
+
 				break;
 			case '+':	// 构造加号 NFA 片段
 				
-				//
-				// TODO: 在此添加代码
-				//
+				fragment = PopNFAFragment(&FragmentStack);
+				NewAcceptState = CreateNFAState();
+				NewAcceptState->AcceptFlag = 1;
+
+				fragment.AcceptState->AcceptFlag = 0;
+				fragment.AcceptState->Transform = VoidTrans;
+				fragment.AcceptState->Next1 = NewAcceptState;
+				NewAcceptState->Transform  = VoidTrans;
+				NewAcceptState->Next1 = fragment.StartState;
+
+                // 调用 MakeNFAFragment 函数生成一个新的 NFA 片段, 并入栈
+				fm = MakeNFAFragment(fragment.StartState, NewAcceptState);
+				PushNFAFragment(&FragmentStack, fm);
 				
 				break;
 
