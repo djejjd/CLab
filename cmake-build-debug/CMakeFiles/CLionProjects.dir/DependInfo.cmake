@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/cygdrive/d/Projects/CLionProjects/Lab01/NFAFragmentStack.c" "/cygdrive/d/Projects/CLionProjects/cmake-build-debug/CMakeFiles/CLionProjects.dir/Lab01/NFAFragmentStack.c.o"
-  "/cygdrive/d/Projects/CLionProjects/Lab01/OutputResult.c" "/cygdrive/d/Projects/CLionProjects/cmake-build-debug/CMakeFiles/CLionProjects.dir/Lab01/OutputResult.c.o"
-  "/cygdrive/d/Projects/CLionProjects/Lab01/RegexpToPost.c" "/cygdrive/d/Projects/CLionProjects/cmake-build-debug/CMakeFiles/CLionProjects.dir/Lab01/RegexpToPost.c.o"
-  "/cygdrive/d/Projects/CLionProjects/Lab01/main.c" "/cygdrive/d/Projects/CLionProjects/cmake-build-debug/CMakeFiles/CLionProjects.dir/Lab01/main.c.o"
-  "/cygdrive/d/Projects/CLionProjects/Lab04/main.c" "/cygdrive/d/Projects/CLionProjects/cmake-build-debug/CMakeFiles/CLionProjects.dir/Lab04/main.c.o"
+  "/cygdrive/d/Projects/CLionProjects/CLab/Lab01/NFAFragmentStack.c" "/cygdrive/d/Projects/CLionProjects/CLab/cmake-build-debug/CMakeFiles/CLionProjects.dir/Lab01/NFAFragmentStack.c.o"
+  "/cygdrive/d/Projects/CLionProjects/CLab/Lab01/OutputResult.c" "/cygdrive/d/Projects/CLionProjects/CLab/cmake-build-debug/CMakeFiles/CLionProjects.dir/Lab01/OutputResult.c.o"
+  "/cygdrive/d/Projects/CLionProjects/CLab/Lab01/RegexpToPost.c" "/cygdrive/d/Projects/CLionProjects/CLab/cmake-build-debug/CMakeFiles/CLionProjects.dir/Lab01/RegexpToPost.c.o"
+  "/cygdrive/d/Projects/CLionProjects/CLab/Lab01/main.c" "/cygdrive/d/Projects/CLionProjects/CLab/cmake-build-debug/CMakeFiles/CLionProjects.dir/Lab01/main.c.o"
+  "/cygdrive/d/Projects/CLionProjects/CLab/Lab04/main.c" "/cygdrive/d/Projects/CLionProjects/CLab/cmake-build-debug/CMakeFiles/CLionProjects.dir/Lab04/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

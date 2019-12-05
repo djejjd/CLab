@@ -6,5 +6,5 @@ C_FLAGS = -g   -std=gnu11
 
 C_DEFINES = 
 
-C_INCLUDES = -I/cygdrive/d/Projects/CLionProjects/Lab01 -I/cygdrive/d/Projects/CLionProjects/Lab04 
+C_INCLUDES = -I/cygdrive/d/Projects/CLionProjects/CLab/Lab01 -I/cygdrive/d/Projects/CLionProjects/CLab/Lab04 
 
