@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="Lab04" targetName="Lab04" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="10f9082c-b05c-4be8-8950-ba82c9faafa1" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ProjectId" id="1UT64P4edOj0uDakxLi8x7bWN6Q" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Lab04" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Lab04" TARGET_NAME="Lab04" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Lab04" RUN_TARGET_NAME="Lab04">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10f9082c-b05c-4be8-8950-ba82c9faafa1" name="Default Changelist" comment="" />
+      <created>1575368046273</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575368046273</updated>
+      <workItem from="1575368049175" duration="65000" />
+      <workItem from="1575368115541" duration="140000" />
+      <workItem from="1575368343264" duration="227000" />
+      <workItem from="1575519212785" duration="15000" />
+      <workItem from="1575519229218" duration="2310000" />
+      <workItem from="1575522420697" duration="1008000" />
+      <workItem from="1575551383632" duration="333000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1575520962009">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1575520962009" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1575524216005">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1575524216005" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1575524216004">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1575524216004" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1575524216004">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1575524216004" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1575524216005">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1575524216005" />
+    <state width="1237" height="230" key="GridCell.Tab.1.bottom" timestamp="1575524215997">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="230" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1575524215997" />
+    <state width="1237" height="230" key="GridCell.Tab.1.center" timestamp="1575524215997">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="230" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1575524215997" />
+    <state width="1237" height="230" key="GridCell.Tab.1.left" timestamp="1575524215997">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="230" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1575524215997" />
+    <state width="1237" height="230" key="GridCell.Tab.1.right" timestamp="1575524215997">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="230" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1575524215997" />
+    <state width="640" height="175" key="ImportCMakeProjectWizard.bottomPanel" timestamp="1575519226778">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="640" height="175" key="ImportCMakeProjectWizard.bottomPanel/0.0.1280.680@0.0.1280.680" timestamp="1575519226778" />
+    <state width="640" height="409" key="ImportCMakeProjectWizard.topPanel" timestamp="1575519226778">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="640" height="409" key="ImportCMakeProjectWizard.topPanel/0.0.1280.680@0.0.1280.680" timestamp="1575519226778" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1575520963015">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1575520963015" />
+    <state x="329" y="164" key="com.intellij.ide.util.TipDialog" timestamp="1575368051156">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="329" y="164" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1575368051156" />
+    <state x="297" y="151" key="run.anything.popup" timestamp="1575519634357">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1575519634357" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1575521096619">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1575521096619" />
+  </component>
+</project>
