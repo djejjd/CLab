@@ -108,6 +108,7 @@ void RemoveLeftRecursion(Rule* pHead)
                 pNewRule->pFirstSymbol = pSelect->pNextSymbol;
                 pNewSymbol = pNewRule->pFirstSymbol;
 
+<<<<<<< HEAD
             }
 			else
             {
@@ -129,6 +130,11 @@ void RemoveLeftRecursion(Rule* pHead)
             // 将A'加入新的Rule中
             pNewSymbol->pNextSymbol = pNewASymbol;
             PrintRule(pNewRule);
+=======
+			//
+			// TODO: 在此添加代码
+			//
+>>>>>>> 66d0efdd738bcb4a14a9b26e3ea2a89b3613fb64
 
             printf(" ");
 		}
