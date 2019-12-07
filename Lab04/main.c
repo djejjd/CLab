@@ -49,11 +49,15 @@ int main(int argc, char* argv[])
 */
 void AddSymbolToSelect(RuleSymbol* pSelect, RuleSymbol* pNewSymbol)
 {
-	
-	//
-	// TODO: 在此添加代码
-	//
-	
+
+//    pNewSymbol->pNextSymbol = pNewASymbol;
+//
+//    // 将原来Select中的内容删除
+//    pSelect->pNextSymbol = NULL;
+//    pSelect->isToken = -1;
+//    pSelect->TokenName[0] = '\0';
+//    pSelect->pRule = NULL;
+
 }
 
 /*
@@ -92,27 +96,41 @@ void RemoveLeftRecursion(Rule* pHead)
 	RuleSymbol **pSelectPrePtr = &pHead->pFirstSymbol;
 	while(pSelect != NULL) // 循环处理所有的 Select
 	{
+	    RuleSymbol* pNewASymbol;
+	    pNewASymbol = CreateSymbol();
+	    pNewASymbol->isToken = 0;
+	    pNewASymbol->pRule = pNewRule;
+
 		if(0 == pSelect->isToken && pSelect->pRule == pHead)// Select 存在左递归
 		{
-            // 创建结尾处的Select: A'
-            RuleSymbol* pNewASymbol;
-            pNewASymbol = CreateSymbol();
-            pNewASymbol->isToken = 0;
-            pNewASymbol->pRule = pNewRule;
-
 			// 移除包含左递归的 Select，将其转换为右递归后添加到新 Rule 的末尾，并移动游标
             RuleSymbol* pNewSymbol = pNewRule->pFirstSymbol;
+            // 第一个左递归
             if (pNewSymbol == NULL)
             {
                 // 将Symbol转化为右递归添加到新Rule.
                 pNewRule->pFirstSymbol = pSelect->pNextSymbol;
                 pNewSymbol = pNewRule->pFirstSymbol;
 
-<<<<<<< HEAD
+                // 找到该Select的终点
+                while (pNewSymbol->pNextSymbol != NULL)
+                {
+                    pNewSymbol = pNewSymbol->pNextSymbol;
+                }
+
+                // 将A'加入新的Rule中
+                pNewSymbol->pNextSymbol = pNewASymbol;
+
+                // 将原来Select中的内容删除
+                pSelect->pNextSymbol = NULL;
+                pSelect->isToken = -1;
+                pSelect->TokenName[0] = '\0';
+                pSelect->pRule = NULL;
+
             }
+            // 剩余的左递归
 			else
             {
-                pNewSymbol = pNewRule->pFirstSymbol;
                 // 找到为NULL的pOther的位置，即下一个Select的位置
 			    while (pNewSymbol->pOther != NULL)
                 {
@@ -120,37 +138,49 @@ void RemoveLeftRecursion(Rule* pHead)
                 }
 			    // 将Symbol转化的右递归加入到pOther中
 			    pNewSymbol->pOther = pSelect->pNextSymbol;
-            }
-            // 找到该Select的终点
-            while (pNewSymbol->pNextSymbol != NULL)
-            {
-                pNewSymbol = pNewSymbol->pNextSymbol;
-            }
 
-            // 将A'加入新的Rule中
-            pNewSymbol->pNextSymbol = pNewASymbol;
-            PrintRule(pNewRule);
-=======
-			//
-			// TODO: 在此添加代码
-			//
->>>>>>> 66d0efdd738bcb4a14a9b26e3ea2a89b3613fb64
+                // 找到该Select的终点
+                pNewSymbol = pNewSymbol->pOther;
+                while (pNewSymbol->pNextSymbol != NULL)
+                {
+                    pNewSymbol = pNewSymbol->pNextSymbol;
+                }
 
-            printf(" ");
+                // 将A'加入新的Rule中
+                pNewSymbol->pNextSymbol = pNewASymbol;
+
+                // 将原来Select中的内容删除
+                pSelect->pNextSymbol = NULL;
+                pSelect->isToken = -1;
+                pSelect->TokenName[0] = '\0';
+                pSelect->pRule = NULL;
+            }
+            // 读取下一个Select
+            pSelect = pSelect->pOther;
 		}
 		else // Select 不存在左递归
 		{
 			// 在没有左递归的 Select 末尾添加指向新 Rule 的非终结符，并移动游标
-
-			//
-			// TODO: 在此添加代码
-			//
-
+			RuleSymbol* getNewSymbol = pSelect;
+			while (getNewSymbol->pNextSymbol != NULL)
+            {
+			    getNewSymbol = getNewSymbol->pNextSymbol;
+            }
+			// 将A'加入末尾
+			getNewSymbol->pNextSymbol = pNewASymbol;
+			// 读取下一个Select
+			pSelect = pSelect->pOther;
 		}
 	}
+//    pSelect = *pSelectPrePtr;
+//    PrintRule(pSelect);
+    Rule* getNewRule;
+    getNewRule = CreateRule(pHead->RuleName);
+    getNewRule->pFirstSymbol = (*pSelectPrePtr)->pOther;
+    PrintRule(getNewRule);
 
+    PrintRule(pNewRule);
     printf(" ");
-
 	// 在新 Rule 的最后加入ε(用 '$' 代替)
 	// 将新 Rule 插入文法链表
 
@@ -476,7 +506,7 @@ void PrintRule(Rule* pHead)
             }
         }
 
-        if (pRuleSymbol->pOther != NULL)
+        if (pRuleSymbol->pOther != NULL && pRuleSymbol->pOther->pNextSymbol != NULL)
         {
             pRuleSymbol = pRuleSymbol->pOther;
             printf("|");
