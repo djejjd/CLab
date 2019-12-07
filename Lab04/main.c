@@ -519,7 +519,7 @@ void PrintRule(Rule* pHead)
             }
         }
 
-        if (pRuleSymbol->pOther != NULL && pRuleSymbol->isToken >= 0)
+        if (pRuleSymbol->pOther != NULL && pRuleSymbol->pOther->isToken != -1)
         {
             pRuleSymbol = pRuleSymbol->pOther;
             printf("|");

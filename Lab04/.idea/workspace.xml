@@ -110,7 +110,8 @@
       <workItem from="1575686778132" duration="120000" />
       <workItem from="1575686945547" duration="32000" />
       <workItem from="1575686978465" duration="5953000" />
-      <workItem from="1575700111410" duration="12276000" />
+      <workItem from="1575700111410" duration="12525000" />
+      <workItem from="1575756604848" duration="551000" />
     </task>
     <servers />
   </component>
@@ -200,11 +201,9 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>196</line>
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
+        <breakpoint enabled="true" type="CidrExceptionBreakpoint">
+          <option name="timeStamp" value="61" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
