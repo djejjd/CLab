@@ -94,15 +94,43 @@ void RemoveLeftRecursion(Rule* pHead)
 	{
 		if(0 == pSelect->isToken && pSelect->pRule == pHead)// Select 存在左递归
 		{
+            // 创建结尾处的Select: A'
+            RuleSymbol* pNewASymbol;
+            pNewASymbol = CreateSymbol();
+            pNewASymbol->isToken = 0;
+            pNewASymbol->pRule = pNewRule;
+
 			// 移除包含左递归的 Select，将其转换为右递归后添加到新 Rule 的末尾，并移动游标
+            RuleSymbol* pNewSymbol = pNewRule->pFirstSymbol;
+            if (pNewSymbol == NULL)
+            {
+                // 将Symbol转化为右递归添加到新Rule.
+                pNewRule->pFirstSymbol = pSelect->pNextSymbol;
+                pNewSymbol = pNewRule->pFirstSymbol;
 
+            }
+			else
+            {
+                pNewSymbol = pNewRule->pFirstSymbol;
+                // 找到为NULL的pOther的位置，即下一个Select的位置
+			    while (pNewSymbol->pOther != NULL)
+                {
+                    pNewSymbol = pNewSymbol->pOther;
+                }
+			    // 将Symbol转化的右递归加入到pOther中
+			    pNewSymbol->pOther = pSelect->pNextSymbol;
+            }
+            // 找到该Select的终点
+            while (pNewSymbol->pNextSymbol != NULL)
+            {
+                pNewSymbol = pNewSymbol->pNextSymbol;
+            }
 
-			// 了解如何进行消除左递归
+            // 将A'加入新的Rule中
+            pNewSymbol->pNextSymbol = pNewASymbol;
+            PrintRule(pNewRule);
 
-			//
-			// TODO: 在此添加代码
-			//
-
+            printf(" ");
 		}
 		else // Select 不存在左递归
 		{
@@ -114,6 +142,8 @@ void RemoveLeftRecursion(Rule* pHead)
 
 		}
 	}
+
+    printf(" ");
 
 	// 在新 Rule 的最后加入ε(用 '$' 代替)
 	// 将新 Rule 插入文法链表
@@ -451,5 +481,6 @@ void PrintRule(Rule* pHead)
             break;
         }
     }
+	printf("\n");
 }
 
