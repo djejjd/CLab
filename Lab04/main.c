@@ -97,8 +97,6 @@ void RemoveLeftRecursion(Rule* pHead)
 			// 移除包含左递归的 Select，将其转换为右递归后添加到新 Rule 的末尾，并移动游标
 
 
-			// 了解如何进行消除左递归
-
 			//
 			// TODO: 在此添加代码
 			//
