@@ -69,6 +69,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
@@ -111,7 +112,8 @@
       <workItem from="1575686945547" duration="32000" />
       <workItem from="1575686978465" duration="5953000" />
       <workItem from="1575700111410" duration="12525000" />
-      <workItem from="1575756604848" duration="551000" />
+      <workItem from="1575756604848" duration="688000" />
+      <workItem from="1575728531343" duration="2146000" />
     </task>
     <servers />
   </component>
@@ -204,6 +206,11 @@
         <breakpoint enabled="true" type="CidrExceptionBreakpoint">
           <option name="timeStamp" value="61" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.c</url>
+          <line>37</line>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>

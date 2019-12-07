@@ -79,7 +79,6 @@ void AddSelectToRule(Rule* pRule, RuleSymbol* pNewSelect)
         pNewSelect = pNewSelect->pOther;
     }
     pNewSelect->pOther = lastSelect;
-    printf(" ");
 }
 
 /*
@@ -188,19 +187,17 @@ void RemoveLeftRecursion(Rule* pHead)
 	RuleSymbol* pNewSelect = pNewRule->pFirstSymbol;
     AddSelectToRule(pNewRule, pNewSelect);
 
-    Rule* getNewRule;
-    getNewRule = CreateRule(pHead->RuleName);
-    getNewRule->pFirstSymbol = (*pSelectPrePtr)->pOther;
-    PrintRule(getNewRule);
-
-    PrintRule(pNewRule);
-    printf(" ");
+//    测试代码
+//    Rule* getNewRule;
+//    getNewRule = CreateRule(pHead->RuleName);
+//    getNewRule->pFirstSymbol = (*pSelectPrePtr)->pOther;
+//    PrintRule(pHead);
+//    PrintRule(pNewRule);
+//    printf(" ");
 
     // 将新 Rule 插入文法链表
-    //
-	// TODO: 在此添加代码
-	//
-	
+    pHead->pNextRule = pNewRule;
+
 	return;
 }
 
@@ -491,45 +488,52 @@ void PrintRule(Rule* pHead)
     Rule* pRule;
     RuleSymbol* pRuleSymbol;
     pRule = pHead;
-	pRuleSymbol = pHead->pFirstSymbol;
-	printf("%s->", pHead->RuleName);
-	fflush(stdout);
-	while (1)
+    while (pRule != NULL)
     {
-	    RuleSymbol* newSymbol = pRuleSymbol;
+        pRuleSymbol = pRule->pFirstSymbol;
+        printf("%s->", pRule->RuleName);
+        fflush(stdout);
         while (1)
         {
-	        if (newSymbol->isToken == 0)
+            RuleSymbol* newSymbol = pRuleSymbol;
+            while (1)
             {
-                printf("%s", newSymbol->pRule->RuleName);
-                fflush(stdout);
+                if (newSymbol->isToken == 0)
+                {
+                    printf("%s", newSymbol->pRule->RuleName);
+                    fflush(stdout);
+                }
+                else
+                {
+                    printf("%s", newSymbol->TokenName);
+                    fflush(stdout);
+                }
+
+                if (newSymbol->pNextSymbol != NULL)
+                {
+                    newSymbol = newSymbol->pNextSymbol;
+                }
+                else
+                {
+                    break;
+                }
             }
-	        else
+
+            if (pRuleSymbol->pOther != NULL && pRuleSymbol->pOther->isToken != -1 )
             {
-                printf("%s", newSymbol->TokenName);
+                pRuleSymbol = pRuleSymbol->pOther;
+                printf("|");
                 fflush(stdout);
-            }
-            if (newSymbol->pNextSymbol != NULL)
-            {
-                newSymbol = newSymbol->pNextSymbol;
             }
             else
             {
                 break;
             }
         }
-
-        if (pRuleSymbol->pOther != NULL && pRuleSymbol->pOther->isToken != -1)
-        {
-            pRuleSymbol = pRuleSymbol->pOther;
-            printf("|");
-            fflush(stdout);
-        }
-        else
-        {
-            break;
-        }
+        printf("\n");
+        pRule = pRule->pNextRule;
     }
-	printf("\n");
+
+
 }
 
