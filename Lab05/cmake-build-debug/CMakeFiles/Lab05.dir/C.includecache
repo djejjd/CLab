@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/warren/projects/CLionProjects/CLab/Lab05/RemoveLeftRecursion.h
+stdio.h
+-
+
+/home/warren/projects/CLionProjects/CLab/Lab05/main.c
+RemoveLeftRecursion.h
+/home/warren/projects/CLionProjects/CLab/Lab05/RemoveLeftRecursion.h
+string.h
+-
+stdlib.h
+-
+
