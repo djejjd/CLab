@@ -124,6 +124,13 @@ void RemoveLeftRecursion(Rule* pHead)
                     pNewSymbol = pNewSymbol->pNextSymbol;
                 }
                 pNewSymbol->pRule = pNewRule;
+                // 将原来Select中的内容删除,即将下一个Select赋给当前的Select
+                pSelect->pNextSymbol = pSelect->pOther->pNextSymbol;
+                pSelect->isToken = pSelect->pOther->isToken;
+                pSelect->TokenName[0] = pSelect->pOther->TokenName[0];
+                pSelect->pRule = pSelect->pOther->pRule;
+                pSelect->pOther = pSelect->pOther->pOther;
+
 
             }
             // 剩余的左递归
@@ -151,16 +158,16 @@ void RemoveLeftRecursion(Rule* pHead)
                     pNewSymbol = pNewSymbol->pNextSymbol;
                 }
                 pNewSymbol->pRule = pNewRule;
+
+                // 将原来Select中的内容删除
+                pSelect->pNextSymbol = NULL;
+                pSelect->isToken = -1;
+                pSelect->TokenName[0] = '\0';
+                pSelect->pRule = NULL;
+
+                // 读取下一个Select
+                pSelect = pSelect->pOther;
             }
-
-            // 将原来Select中的内容删除
-            pSelect->pNextSymbol = NULL;
-            pSelect->isToken = -1;
-            pSelect->TokenName[0] = '\0';
-            pSelect->pRule = NULL;
-
-            // 读取下一个Select
-            pSelect = pSelect->pOther;
 		}
 		else // Select 不存在左递归
 		{
@@ -188,9 +195,6 @@ void RemoveLeftRecursion(Rule* pHead)
     AddSelectToRule(pNewRule, pNewSelect);
 
 //    测试代码
-//    Rule* getNewRule;
-//    getNewRule = CreateRule(pHead->RuleName);
-//    getNewRule->pFirstSymbol = (*pSelectPrePtr)->pOther;
 //    PrintRule(pHead);
 //    PrintRule(pNewRule);
 //    printf(" ");
@@ -488,14 +492,17 @@ void PrintRule(Rule* pHead)
     Rule* pRule;
     RuleSymbol* pRuleSymbol;
     pRule = pHead;
+    // 对文法进行循环
     while (pRule != NULL)
     {
         pRuleSymbol = pRule->pFirstSymbol;
         printf("%s->", pRule->RuleName);
         fflush(stdout);
+        // 对单个Select中的所有Symbol进行循环
         while (1)
         {
             RuleSymbol* newSymbol = pRuleSymbol;
+            // 对单个Select中的一组Symbol进行循环
             while (1)
             {
                 if (newSymbol->isToken == 0)
@@ -533,7 +540,6 @@ void PrintRule(Rule* pHead)
         printf("\n");
         pRule = pRule->pNextRule;
     }
-
 
 }
 
