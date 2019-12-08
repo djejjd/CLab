@@ -57,9 +57,17 @@ int main(int argc, char* argv[])
 int SymbolNeedReplace(const Rule* pCurRule, const RuleSymbol* pSymbol)
 {
 
-	//
-	// TODO: 在此添加代码
-	//
+    if (pSymbol->isToken == 1 || pSymbol->pRule == pCurRule)
+        return 0;
+	while (pCurRule != NULL)
+    {
+	    // 当前Rule的第一个Symbol对应的Rule出现在后来的Rule中则不需要替换
+	    if (pSymbol->pRule == pCurRule)
+            return 0;
+	    pCurRule = pCurRule->pNextRule;
+    }
+
+	return 1;
 	
 }
 
@@ -168,11 +176,7 @@ int RuleHasLeftRecursion(Rule* pRule)
 */
 void AddSymbolToSelect(RuleSymbol* pSelect, RuleSymbol* pNewSymbol)
 {
-
-	//
-	// TODO: 在此添加代码
-	//
-
+    pSelect->pNextSymbol = pNewSymbol;
 }
 
 /*
@@ -206,7 +210,8 @@ void RemoveLeftRecursion(Rule* pHead)
 	Rule* pNewRule;			  	// Rule 指针
 	int isChange;				// Rule 是否被替换的标记
 	RuleSymbol **pSelectPrePtr; // Symbol 指针的指针
-	
+
+    // 对文法的循环
 	for(pRule = pHead; pRule != NULL; pRule = pRule->pNextRule)
 	{
 		//
@@ -259,20 +264,42 @@ void RemoveLeftRecursion(Rule* pHead)
 			if(0 == pSelect->isToken && pSelect->pRule == pRule) // Select 存在左递归
 			{
 				// 移除包含左递归的 Select，将其转换为右递归后添加到新 Rule 的末尾，并移动游标
-				
-				//
-				// TODO: 在此添加代码
-				//
-				
+
+                // 将Symbol转化为右递归放入pNewRule
+                pNewRule->pFirstSymbol = pSelect->pNextSymbol;
+
+                RuleSymbol* getNewSymbol;
+                getNewSymbol = pSelect;
+                while (getNewSymbol->pNextSymbol != NULL)
+                {
+                    getNewSymbol = getNewSymbol->pNextSymbol;
+                }
+
+				// 将对应的A',B'加入到新的Rule中
+                RuleSymbol* aNewSymbol;
+                aNewSymbol = CreateSymbol();
+                aNewSymbol->isToken = 0;
+                aNewSymbol->pRule = pNewRule;
+				AddSymbolToSelect(getNewSymbol, aNewSymbol);
 			}
 			else // Select 不存在左递归
 			{
 				// 在没有左递归的 Select 末尾添加指向新 Rule 的非终结符，并移动游标
-				
-				//
-				// TODO: 在此添加代码
-				//
+                RuleSymbol* getNewSymbol;
+                getNewSymbol = pSelect;
+                while (getNewSymbol->pNextSymbol != NULL)
+                {
+                    getNewSymbol = getNewSymbol->pNextSymbol;
+                }
+
+                // 将对应的A',B'加入到新的Rule中
+                RuleSymbol* aNewSymbol;
+                aNewSymbol = CreateSymbol();
+                aNewSymbol->isToken = 0;
+                aNewSymbol->pRule = pNewRule;
+                AddSymbolToSelect(getNewSymbol, aNewSymbol);
 			}
+			pSelect = pSelect->pOther;
 		}
 
 		// 在新 Rule 的最后加入ε(用 '$' 代替)
