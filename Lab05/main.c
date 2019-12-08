@@ -210,6 +210,7 @@ void RemoveLeftRecursion(Rule* pHead)
 	Rule* pNewRule;			  	// Rule 指针
 	int isChange;				// Rule 是否被替换的标记
 	RuleSymbol **pSelectPrePtr; // Symbol 指针的指针
+	Rule* getNewRule;
 
     // 对文法的循环
 	for(pRule = pHead; pRule != NULL; pRule = pRule->pNextRule)
@@ -279,11 +280,12 @@ void RemoveLeftRecursion(Rule* pHead)
                 RuleSymbol* aNewSymbol;
                 aNewSymbol = CreateSymbol();
                 aNewSymbol->isToken = 0;
-                aNewSymbol->pRule = pNewRule;
+                aNewSymbol->pRule = pNewRule; 
 				AddSymbolToSelect(getNewSymbol, aNewSymbol);
 			}
 			else // Select 不存在左递归
 			{
+                getNewRule = CreateRule(pHead->RuleName); // 创建新 Rule
 				// 在没有左递归的 Select 末尾添加指向新 Rule 的非终结符，并移动游标
                 RuleSymbol* getNewSymbol;
                 getNewSymbol = pSelect;
@@ -298,6 +300,7 @@ void RemoveLeftRecursion(Rule* pHead)
                 aNewSymbol->isToken = 0;
                 aNewSymbol->pRule = pNewRule;
                 AddSymbolToSelect(getNewSymbol, aNewSymbol);
+//                TODO 修改
 			}
 			pSelect = pSelect->pOther;
 		}
