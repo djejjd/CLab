@@ -194,11 +194,6 @@ void RemoveLeftRecursion(Rule* pHead)
 	RuleSymbol* pNewSelect = pNewRule->pFirstSymbol;
     AddSelectToRule(pNewRule, pNewSelect);
 
-//    测试代码
-//    PrintRule(pHead);
-//    PrintRule(pNewRule);
-//    printf(" ");
-
     // 将新 Rule 插入文法链表
     pHead->pNextRule = pNewRule;
 

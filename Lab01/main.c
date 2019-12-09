@@ -10,10 +10,10 @@ NFAFragmentStack FragmentStack;	// Õ»¡£ÓÃÓÚ´¢´æ NFA Æ¬¶Î
 //char* regexp = "a|b";	// Àý 2
 // char* regexp = "a*";		// Àý 3
 // char* regexp = "a?";		// Àý 4
-// char* regexp = "a+";		// Àý 5
+ char* regexp = "a+";		// Àý 5
 // char* regexp = "a(a|1)*";// Àý 6
 // char* regexp = "(aa|b)*a(a|bb)*";// Àý 7
- char* regexp = "(a|b)*a(a|b)?"; 	// Àý 8
+// char* regexp = "(a|b)*a(a|b)?"; 	// Àý 8
 
 char regexp_ci[256];
 

@@ -210,7 +210,6 @@ void RemoveLeftRecursion(Rule* pHead)
 	Rule* pNewRule;			  	// Rule 指针
 	int isChange;				// Rule 是否被替换的标记
 	RuleSymbol **pSelectPrePtr; // Symbol 指针的指针
-	Rule* getNewRule;
 
     // 对文法的循环
 	for(pRule = pHead; pRule != NULL; pRule = pRule->pNextRule)
@@ -249,20 +248,22 @@ void RemoveLeftRecursion(Rule* pHead)
 		}while(isChange);
 
 		// 忽略没有左递归的 Rule;
-		if(!RuleHasLeftRecursion(pRule))
-			continue;
+		if (!RuleHasLeftRecursion(pRule))
+        {
+            continue;
+        }
 
 		//
 		// 消除左递归
 		//
-		pNewRule = CreateRule(pHead->RuleName); // 创建新 Rule
+		pNewRule = CreateRule(pRule->RuleName); // 创建新 Rule
 		strcat(pNewRule->RuleName, Postfix);
 
 		pSelect = pRule->pFirstSymbol; // 初始化 Select 游标
 		pSelectPrePtr = &pRule->pFirstSymbol;
-		while(pSelect != NULL) // 循环处理所有的 Select
+		while (pSelect != NULL) // 循环处理所有的 Select
 		{
-			if(0 == pSelect->isToken && pSelect->pRule == pRule) // Select 存在左递归
+			if (0 == pSelect->isToken && pSelect->pRule == pRule) // Select 存在左递归
 			{
 				// 移除包含左递归的 Select，将其转换为右递归后添加到新 Rule 的末尾，并移动游标
 
@@ -282,10 +283,18 @@ void RemoveLeftRecursion(Rule* pHead)
                 aNewSymbol->isToken = 0;
                 aNewSymbol->pRule = pNewRule; 
 				AddSymbolToSelect(getNewSymbol, aNewSymbol);
-			}
+//				PrintRule(pNewRule);
+//				printf(" ");
+
+                // 删除其在原来的Rule中的位置
+                pSelect->pNextSymbol = pSelect->pOther->pNextSymbol;
+                pSelect->isToken = pSelect->pOther->isToken;
+                pSelect->TokenName[0] = pSelect->pOther->TokenName[0];
+                pSelect->pRule = pSelect->pOther->pRule;
+                pSelect->pOther = pSelect->pOther->pOther;
+            }
 			else // Select 不存在左递归
 			{
-                getNewRule = CreateRule(pHead->RuleName); // 创建新 Rule
 				// 在没有左递归的 Select 末尾添加指向新 Rule 的非终结符，并移动游标
                 RuleSymbol* getNewSymbol;
                 getNewSymbol = pSelect;
@@ -300,20 +309,43 @@ void RemoveLeftRecursion(Rule* pHead)
                 aNewSymbol->isToken = 0;
                 aNewSymbol->pRule = pNewRule;
                 AddSymbolToSelect(getNewSymbol, aNewSymbol);
+
+//                Rule* pNewHead = CreateRule(pRule->RuleName);
+//                pNewHead->pFirstSymbol = pSelect;
+//                PrintRule(pNewHead);
+
 //                TODO 修改
-			}
-			pSelect = pSelect->pOther;
+                pSelect = pSelect->pOther;
+            }
 		}
 
-		// 在新 Rule 的最后加入ε(用 '$' 代替)
-		// 将新 Rule 插入文法链表
-		
-		//
-		// TODO: 在此添加代码
-		//
+        // 在新 Rule 的最后加入ε(用 '$' 代替)
+        // 将新 Rule 插入文法链表
 
-		pRule = pNewRule;
+        RuleSymbol* getNewSymbol;
+        getNewSymbol = pNewRule->pFirstSymbol;
+        while (getNewSymbol->pOther != NULL)
+        {
+            getNewSymbol = getNewSymbol->pOther;
+        }
+//        AddSelectToRule(pNewRule, getNewSymbol);
+
+        // 创建ε
+        RuleSymbol* aNewSymbol = CreateSymbol();
+        aNewSymbol->isToken = 1;
+        strcat(aNewSymbol->TokenName, VoidSymbol);
+
+        getNewSymbol->pOther = aNewSymbol;
+
+		Rule* copyNewRule = pRule->pNextRule;
+		pRule->pNextRule = pNewRule;
+		pNewRule->pNextRule = copyNewRule;
+
+//		PrintRule(pRule);
+//		printf(" ");
 	}
+	PrintRule(pHead);
+	printf(" ");
 }
 
 /*
@@ -606,15 +638,18 @@ void PrintRule(Rule* pHead)
 {
 	Rule* pNewRule;
 	pNewRule = pHead;
+	// 对所有的文法进行循环
 	while(pNewRule != NULL)
     {
 	    printf("%s->", pNewRule->RuleName);
 	    RuleSymbol* pNewSymbol;
 	    pNewSymbol = pNewRule->pFirstSymbol;
+	    // 对Select进行循环
 	    while (pNewSymbol != NULL)
         {
 	        RuleSymbol* pNewRuleSymbol;
 	        pNewRuleSymbol = pNewSymbol;
+	        // 对Select中的某一组Symbol进行循环
 	        while (pNewRuleSymbol != NULL)
             {
 	            if (pNewRuleSymbol->isToken == 1)
@@ -623,7 +658,7 @@ void PrintRule(Rule* pHead)
                 }
 	            else
                 {
-	                printf(pNewRuleSymbol->pRule->RuleName);
+	                printf("%s", pNewRuleSymbol->pRule->RuleName);
                 }
 
 	            pNewRuleSymbol = pNewRuleSymbol->pNextSymbol;
