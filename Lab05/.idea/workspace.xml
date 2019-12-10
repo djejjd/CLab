@@ -66,7 +66,7 @@
       <workItem from="1575773285393" duration="12485000" />
       <workItem from="1575792369998" duration="669000" />
       <workItem from="1575955092937" duration="4132000" />
-      <workItem from="1575975126240" duration="5860000" />
+      <workItem from="1575975126240" duration="7715000" />
     </task>
     <servers />
   </component>
@@ -74,15 +74,6 @@
     <option name="version" value="1" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>338</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="pRule" />

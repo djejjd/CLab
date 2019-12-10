@@ -172,9 +172,11 @@ RuleSymbol* ReplaceSelect(const RuleSymbol* pSelectTemplate)
 void FreeSelect(RuleSymbol* pSelect)
 {
 
-	//
-	// TODO: 在此添加代码
-	//
+    while (pSelect != NULL)
+    {
+        free(pSelect);
+        pSelect = pSelect->pOther;
+    }
 
 }
 
@@ -192,9 +194,17 @@ void FreeSelect(RuleSymbol* pSelect)
 int RuleHasLeftRecursion(Rule* pRule)
 {
 
-	//
-	// TODO: 在此添加代码
-	//
+	RuleSymbol* pSelect = pRule->pFirstSymbol;
+	while (pSelect != NULL)
+    {
+	    if (pSelect->isToken == 0 && pSelect->pRule == pRule)
+        {
+	        return 1;
+        }
+	    pSelect = pSelect->pOther;
+    }
+
+	return 0;
 
 }
 
@@ -310,6 +320,7 @@ void RemoveLeftRecursion(Rule* pHead)
                     pSelect->isToken = pNewSelects->isToken;
                     pSelect->pRule = pNewSelects->pRule;
                     strcpy(pSelect->TokenName, pNewSelects->TokenName);
+                    FreeSelect(pNewSelects);
 
                     temp = getNewSelect;
                     while (temp != NULL)
@@ -354,24 +365,23 @@ void RemoveLeftRecursion(Rule* pHead)
 				// 移除包含左递归的 Select，将其转换为右递归后添加到新 Rule 的末尾，并移动游标
 
                 // 将Symbol转化为右递归放入pNewRule
-                if (pNewRule->pFirstSymbol == NULL)
+                if (pNewRule->pFirstSymbol == NULL) // 第一次添加
                 {
-                    pNewRule->pFirstSymbol = pSelect->pNextSymbol;
+                    RuleSymbol* getNewSelect = CopySelect(pSelect->pNextSymbol);
+                    pNewRule->pFirstSymbol = getNewSelect;
                     // 将对应的A',B'加入到新的Rule中
                     AddSymbolToSelect(pNewRule->pFirstSymbol, aNewSymbol);
 
                 }
                 else
                 {
-                    pNewRule->pFirstSymbol->pOther = pSelect->pNextSymbol;
+                    RuleSymbol* getNewSelect = CopySelect(pSelect->pNextSymbol);
+                    pNewRule->pFirstSymbol->pOther = getNewSelect;
+
                     // 将对应的A',B'加入到新的Rule中
-                    // TODO 有问题
                     AddSymbolToSelect(pNewRule->pFirstSymbol->pOther, aNewSymbol);
-                    PrintRule(pRule);
-                    PrintRule(pNewRule);
 
                 }
-
 
                 // 删除其在原来的Rule中的位置
                 (*pSelectPrePtr) = pSelect->pOther;
