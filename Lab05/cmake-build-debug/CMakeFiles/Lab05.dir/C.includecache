@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/d/Projects/CLionProjects/CLab/Lab05/RemoveLeftRecursion.h
+/home/warren/projects/CLionProjects/CLab/Lab05/RemoveLeftRecursion.h
 stdio.h
 -
 
-/cygdrive/d/Projects/CLionProjects/CLab/Lab05/main.c
+/home/warren/projects/CLionProjects/CLab/Lab05/main.c
 RemoveLeftRecursion.h
-/cygdrive/d/Projects/CLionProjects/CLab/Lab05/RemoveLeftRecursion.h
+/home/warren/projects/CLionProjects/CLab/Lab05/RemoveLeftRecursion.h
 string.h
 -
 stdlib.h

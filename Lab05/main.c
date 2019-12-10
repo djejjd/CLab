@@ -155,7 +155,6 @@ RuleSymbol* ReplaceSelect(const RuleSymbol* pSelectTemplate)
     while (pSelect != NULL)
     {
         AddSymbolToSelect(pSelect, aNewSymbol);
-        PrintRule(pSelectTemplate->pRule);
         pSelect = pSelect->pOther;
     }
 
@@ -242,6 +241,16 @@ void AddSelectToRule(Rule* pRule, RuleSymbol* pNewSelect)
 
         pSelect->pOther = aNewSymbol;
     }
+    else
+    {
+        RuleSymbol* pSelect = pRule->pFirstSymbol;
+        while (pSelect->pOther)
+        {
+            pSelect = pSelect->pOther;
+        }
+
+        pSelect->pOther = pNewSelect;
+    }
 
 
 }
@@ -284,8 +293,30 @@ void RemoveLeftRecursion(Rule* pHead)
 					RuleSymbol* pNewSelects = ReplaceSelect(pSelect);
 
 					// 使用新的 Selects 替换原有的 Select，并调用 FreeSelect 函数释放原有的 Select 内存
+					// 将原来Select中的pOther提取出来
+                    RuleSymbol* getNewSelect = CopySelect(pSelect->pOther);
+                    RuleSymbol* temp = pSelect->pOther;
+                    RuleSymbol* tempSelect = getNewSelect;
+                    while (temp->pOther != NULL)
+                    {
+                        tempSelect->pOther = CopySelect(temp->pOther);
+                        temp = temp->pOther;
+                        tempSelect = tempSelect->pOther;
+                    }
 
+                    // 用新的Selects替换旧的Select;
+                    pSelect->pNextSymbol = pNewSelects->pNextSymbol;
+                    pSelect->pOther = pNewSelects->pOther;
+                    pSelect->isToken = pNewSelects->isToken;
+                    pSelect->pRule = pNewSelects->pRule;
+                    strcpy(pSelect->TokenName, pNewSelects->TokenName);
 
+                    temp = getNewSelect;
+                    while (temp != NULL)
+                    {
+                        AddSelectToRule(pRule, temp);
+                        temp = temp->pOther;
+                    }
 
 					break;
 				}
@@ -294,6 +325,7 @@ void RemoveLeftRecursion(Rule* pHead)
 					break;
 			}
 		}while(isChange);
+
 
 		// 忽略没有左递归的 Rule;
 		if (!RuleHasLeftRecursion(pRule))
@@ -327,16 +359,23 @@ void RemoveLeftRecursion(Rule* pHead)
                     pNewRule->pFirstSymbol = pSelect->pNextSymbol;
                     // 将对应的A',B'加入到新的Rule中
                     AddSymbolToSelect(pNewRule->pFirstSymbol, aNewSymbol);
+
                 }
                 else
                 {
-                    pNewRule->pFirstSymbol->pOther = pSelect->pOther;
+                    pNewRule->pFirstSymbol->pOther = pSelect->pNextSymbol;
                     // 将对应的A',B'加入到新的Rule中
+                    // TODO 有问题
                     AddSymbolToSelect(pNewRule->pFirstSymbol->pOther, aNewSymbol);
+                    PrintRule(pRule);
+                    PrintRule(pNewRule);
+
                 }
+
 
                 // 删除其在原来的Rule中的位置
                 (*pSelectPrePtr) = pSelect->pOther;
+
             }
 			else // Select 不存在左递归
 			{
@@ -346,6 +385,7 @@ void RemoveLeftRecursion(Rule* pHead)
 
                 // 移动游标
                 pSelectPrePtr = &((*pSelectPrePtr)->pOther);
+
             }
             pSelect = pSelect->pOther;
         }
