@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/warren/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/192.6817.18/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /cygdrive/c/Users/Warren/.CLion2019.3/system/cygwin_cmake/bin/cmake.exe
 
 # The command to remove a file.
-RM = /home/warren/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/192.6817.18/bin/cmake/linux/bin/cmake -E remove -f
+RM = /cygdrive/c/Users/Warren/.CLion2019.3/system/cygwin_cmake/bin/cmake.exe -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/warren/projects/CLionProjects/CLab/Lab01
+CMAKE_SOURCE_DIR = /cygdrive/d/Projects/CLionProjects/CLab/Lab01
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug
+CMAKE_BINARY_DIR = /cygdrive/d/Projects/CLionProjects/CLab/Lab01/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Lab01.dir/depend.make
@@ -59,55 +59,55 @@ include CMakeFiles/Lab01.dir/flags.make
 
 CMakeFiles/Lab01.dir/main.c.o: CMakeFiles/Lab01.dir/flags.make
 CMakeFiles/Lab01.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Lab01.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Lab01.dir/main.c.o   -c /home/warren/projects/CLionProjects/CLab/Lab01/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/d/Projects/CLionProjects/CLab/Lab01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Lab01.dir/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Lab01.dir/main.c.o   -c /cygdrive/d/Projects/CLionProjects/CLab/Lab01/main.c
 
 CMakeFiles/Lab01.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Lab01.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/warren/projects/CLionProjects/CLab/Lab01/main.c > CMakeFiles/Lab01.dir/main.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /cygdrive/d/Projects/CLionProjects/CLab/Lab01/main.c > CMakeFiles/Lab01.dir/main.c.i
 
 CMakeFiles/Lab01.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Lab01.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/warren/projects/CLionProjects/CLab/Lab01/main.c -o CMakeFiles/Lab01.dir/main.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /cygdrive/d/Projects/CLionProjects/CLab/Lab01/main.c -o CMakeFiles/Lab01.dir/main.c.s
 
 CMakeFiles/Lab01.dir/NFAFragmentStack.c.o: CMakeFiles/Lab01.dir/flags.make
 CMakeFiles/Lab01.dir/NFAFragmentStack.c.o: ../NFAFragmentStack.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Lab01.dir/NFAFragmentStack.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Lab01.dir/NFAFragmentStack.c.o   -c /home/warren/projects/CLionProjects/CLab/Lab01/NFAFragmentStack.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/d/Projects/CLionProjects/CLab/Lab01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Lab01.dir/NFAFragmentStack.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Lab01.dir/NFAFragmentStack.c.o   -c /cygdrive/d/Projects/CLionProjects/CLab/Lab01/NFAFragmentStack.c
 
 CMakeFiles/Lab01.dir/NFAFragmentStack.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Lab01.dir/NFAFragmentStack.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/warren/projects/CLionProjects/CLab/Lab01/NFAFragmentStack.c > CMakeFiles/Lab01.dir/NFAFragmentStack.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /cygdrive/d/Projects/CLionProjects/CLab/Lab01/NFAFragmentStack.c > CMakeFiles/Lab01.dir/NFAFragmentStack.c.i
 
 CMakeFiles/Lab01.dir/NFAFragmentStack.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Lab01.dir/NFAFragmentStack.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/warren/projects/CLionProjects/CLab/Lab01/NFAFragmentStack.c -o CMakeFiles/Lab01.dir/NFAFragmentStack.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /cygdrive/d/Projects/CLionProjects/CLab/Lab01/NFAFragmentStack.c -o CMakeFiles/Lab01.dir/NFAFragmentStack.c.s
 
 CMakeFiles/Lab01.dir/OutputResult.c.o: CMakeFiles/Lab01.dir/flags.make
 CMakeFiles/Lab01.dir/OutputResult.c.o: ../OutputResult.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Lab01.dir/OutputResult.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Lab01.dir/OutputResult.c.o   -c /home/warren/projects/CLionProjects/CLab/Lab01/OutputResult.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/d/Projects/CLionProjects/CLab/Lab01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Lab01.dir/OutputResult.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Lab01.dir/OutputResult.c.o   -c /cygdrive/d/Projects/CLionProjects/CLab/Lab01/OutputResult.c
 
 CMakeFiles/Lab01.dir/OutputResult.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Lab01.dir/OutputResult.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/warren/projects/CLionProjects/CLab/Lab01/OutputResult.c > CMakeFiles/Lab01.dir/OutputResult.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /cygdrive/d/Projects/CLionProjects/CLab/Lab01/OutputResult.c > CMakeFiles/Lab01.dir/OutputResult.c.i
 
 CMakeFiles/Lab01.dir/OutputResult.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Lab01.dir/OutputResult.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/warren/projects/CLionProjects/CLab/Lab01/OutputResult.c -o CMakeFiles/Lab01.dir/OutputResult.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /cygdrive/d/Projects/CLionProjects/CLab/Lab01/OutputResult.c -o CMakeFiles/Lab01.dir/OutputResult.c.s
 
 CMakeFiles/Lab01.dir/RegexpToPost.c.o: CMakeFiles/Lab01.dir/flags.make
 CMakeFiles/Lab01.dir/RegexpToPost.c.o: ../RegexpToPost.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Lab01.dir/RegexpToPost.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Lab01.dir/RegexpToPost.c.o   -c /home/warren/projects/CLionProjects/CLab/Lab01/RegexpToPost.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/d/Projects/CLionProjects/CLab/Lab01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Lab01.dir/RegexpToPost.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Lab01.dir/RegexpToPost.c.o   -c /cygdrive/d/Projects/CLionProjects/CLab/Lab01/RegexpToPost.c
 
 CMakeFiles/Lab01.dir/RegexpToPost.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Lab01.dir/RegexpToPost.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/warren/projects/CLionProjects/CLab/Lab01/RegexpToPost.c > CMakeFiles/Lab01.dir/RegexpToPost.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /cygdrive/d/Projects/CLionProjects/CLab/Lab01/RegexpToPost.c > CMakeFiles/Lab01.dir/RegexpToPost.c.i
 
 CMakeFiles/Lab01.dir/RegexpToPost.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Lab01.dir/RegexpToPost.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/warren/projects/CLionProjects/CLab/Lab01/RegexpToPost.c -o CMakeFiles/Lab01.dir/RegexpToPost.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /cygdrive/d/Projects/CLionProjects/CLab/Lab01/RegexpToPost.c -o CMakeFiles/Lab01.dir/RegexpToPost.c.s
 
 # Object files for target Lab01
 Lab01_OBJECTS = \
@@ -119,17 +119,17 @@ Lab01_OBJECTS = \
 # External object files for target Lab01
 Lab01_EXTERNAL_OBJECTS =
 
-Lab01: CMakeFiles/Lab01.dir/main.c.o
-Lab01: CMakeFiles/Lab01.dir/NFAFragmentStack.c.o
-Lab01: CMakeFiles/Lab01.dir/OutputResult.c.o
-Lab01: CMakeFiles/Lab01.dir/RegexpToPost.c.o
-Lab01: CMakeFiles/Lab01.dir/build.make
-Lab01: CMakeFiles/Lab01.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable Lab01"
+Lab01.exe: CMakeFiles/Lab01.dir/main.c.o
+Lab01.exe: CMakeFiles/Lab01.dir/NFAFragmentStack.c.o
+Lab01.exe: CMakeFiles/Lab01.dir/OutputResult.c.o
+Lab01.exe: CMakeFiles/Lab01.dir/RegexpToPost.c.o
+Lab01.exe: CMakeFiles/Lab01.dir/build.make
+Lab01.exe: CMakeFiles/Lab01.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/d/Projects/CLionProjects/CLab/Lab01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable Lab01.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Lab01.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/Lab01.dir/build: Lab01
+CMakeFiles/Lab01.dir/build: Lab01.exe
 
 .PHONY : CMakeFiles/Lab01.dir/build
 
@@ -138,6 +138,6 @@ CMakeFiles/Lab01.dir/clean:
 .PHONY : CMakeFiles/Lab01.dir/clean
 
 CMakeFiles/Lab01.dir/depend:
-	cd /home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/warren/projects/CLionProjects/CLab/Lab01 /home/warren/projects/CLionProjects/CLab/Lab01 /home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug /home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug /home/warren/projects/CLionProjects/CLab/Lab01/cmake-build-debug/CMakeFiles/Lab01.dir/DependInfo.cmake --color=$(COLOR)
+	cd /cygdrive/d/Projects/CLionProjects/CLab/Lab01/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /cygdrive/d/Projects/CLionProjects/CLab/Lab01 /cygdrive/d/Projects/CLionProjects/CLab/Lab01 /cygdrive/d/Projects/CLionProjects/CLab/Lab01/cmake-build-debug /cygdrive/d/Projects/CLionProjects/CLab/Lab01/cmake-build-debug /cygdrive/d/Projects/CLionProjects/CLab/Lab01/cmake-build-debug/CMakeFiles/Lab01.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Lab01.dir/depend
 

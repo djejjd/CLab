@@ -1,1 +1,1 @@
-/usr/bin/cc -g   CMakeFiles/Lab01.dir/main.c.o CMakeFiles/Lab01.dir/NFAFragmentStack.c.o CMakeFiles/Lab01.dir/OutputResult.c.o CMakeFiles/Lab01.dir/RegexpToPost.c.o  -o Lab01 
+/usr/bin/cc -g  -Wl,--enable-auto-import CMakeFiles/Lab01.dir/main.c.o CMakeFiles/Lab01.dir/NFAFragmentStack.c.o CMakeFiles/Lab01.dir/OutputResult.c.o CMakeFiles/Lab01.dir/RegexpToPost.c.o  -o Lab01.exe -Wl,--out-implib,libLab01.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

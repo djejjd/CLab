@@ -8,9 +8,9 @@ NFAFragmentStack FragmentStack;	// 栈。用于储存 NFA 片段
 
 //char* regexp = "ab";		// 例 1
 //char* regexp = "a|b";	// 例 2
-// char* regexp = "a*";		// 例 3
+ char* regexp = "a*";		// 例 3
 // char* regexp = "a?";		// 例 4
- char* regexp = "a+";		// 例 5
+// char* regexp = "a+";		// 例 5
 // char* regexp = "a(a|1)*";// 例 6
 // char* regexp = "(aa|b)*a(a|bb)*";// 例 7
 // char* regexp = "(a|b)*a(a|b)?"; 	// 例 8
@@ -166,6 +166,7 @@ NFAState* post2nfa(char *postfix)
 
                 break;
 			case '*':	// 构造星号 NFA 片段
+
 			    NewStartState = CreateNFAState();
                 NewStartState->AcceptFlag = 0;
                 NewAcceptState = CreateNFAState();
@@ -178,8 +179,8 @@ NFAState* post2nfa(char *postfix)
 
 			    fragment.AcceptState->Transform = VoidTrans;
 			    fragment.AcceptState->AcceptFlag = 0;
-			    fragment.AcceptState->Next1 = NewAcceptState;
-			    fragment.AcceptState->Next2 = fragment.StartState;
+			    fragment.AcceptState->Next1 = fragment.StartState;
+			    fragment.AcceptState->Next2 = NewAcceptState;
 
                 // 调用 MakeNFAFragment 函数生成一个新的 NFA 片段, 并入栈
                 fm = MakeNFAFragment(NewStartState, NewAcceptState);

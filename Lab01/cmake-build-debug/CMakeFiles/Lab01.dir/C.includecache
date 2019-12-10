@@ -6,31 +6,31 @@
 
 #IncludeRegexTransform: 
 
-/home/warren/projects/CLionProjects/CLab/Lab01/NFAFragmentStack.h
+/cygdrive/d/Projects/CLionProjects/CLab/Lab01/NFAFragmentStack.h
 RegexpToNFA.h
-/home/warren/projects/CLionProjects/CLab/Lab01/RegexpToNFA.h
+/cygdrive/d/Projects/CLionProjects/CLab/Lab01/RegexpToNFA.h
 
-/home/warren/projects/CLionProjects/CLab/Lab01/OutputResult.h
+/cygdrive/d/Projects/CLionProjects/CLab/Lab01/OutputResult.h
 RegexpToNFA.h
-/home/warren/projects/CLionProjects/CLab/Lab01/RegexpToNFA.h
+/cygdrive/d/Projects/CLionProjects/CLab/Lab01/RegexpToNFA.h
 
-/home/warren/projects/CLionProjects/CLab/Lab01/RegexpToNFA.h
+/cygdrive/d/Projects/CLionProjects/CLab/Lab01/RegexpToNFA.h
 stdio.h
 -
 
-/home/warren/projects/CLionProjects/CLab/Lab01/RegexpToPost.h
+/cygdrive/d/Projects/CLionProjects/CLab/Lab01/RegexpToPost.h
 RegexpToNFA.h
-/home/warren/projects/CLionProjects/CLab/Lab01/RegexpToNFA.h
+/cygdrive/d/Projects/CLionProjects/CLab/Lab01/RegexpToNFA.h
 
-/home/warren/projects/CLionProjects/CLab/Lab01/main.c
+/cygdrive/d/Projects/CLionProjects/CLab/Lab01/main.c
 RegexpToNFA.h
-/home/warren/projects/CLionProjects/CLab/Lab01/RegexpToNFA.h
+/cygdrive/d/Projects/CLionProjects/CLab/Lab01/RegexpToNFA.h
 RegexpToPost.h
-/home/warren/projects/CLionProjects/CLab/Lab01/RegexpToPost.h
+/cygdrive/d/Projects/CLionProjects/CLab/Lab01/RegexpToPost.h
 NFAFragmentStack.h
-/home/warren/projects/CLionProjects/CLab/Lab01/NFAFragmentStack.h
+/cygdrive/d/Projects/CLionProjects/CLab/Lab01/NFAFragmentStack.h
 OutputResult.h
-/home/warren/projects/CLionProjects/CLab/Lab01/OutputResult.h
+/cygdrive/d/Projects/CLionProjects/CLab/Lab01/OutputResult.h
 stdlib.h
 -
 

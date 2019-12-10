@@ -341,8 +341,8 @@ void RemoveLeftRecursion(Rule* pHead)
 		pRule->pNextRule = pNewRule;
 		pNewRule->pNextRule = copyNewRule;
 
-//		PrintRule(pRule);
-//		printf(" ");
+		PrintRule(pRule);
+		printf(" ");
 	}
 	PrintRule(pHead);
 	printf(" ");
