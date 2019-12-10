@@ -171,12 +171,15 @@ RuleSymbol* ReplaceSelect(const RuleSymbol* pSelectTemplate)
 */
 void FreeSelect(RuleSymbol* pSelect)
 {
-
+    RuleSymbol* temp;
     while (pSelect != NULL)
     {
-        free(pSelect);
+        temp = pSelect;
+        free(temp);
         pSelect = pSelect->pOther;
     }
+
+    free(pSelect);
 
 }
 
