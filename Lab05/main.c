@@ -84,9 +84,14 @@ int SymbolNeedReplace(const Rule* pCurRule, const RuleSymbol* pSymbol)
 RuleSymbol* CopySymbol(const RuleSymbol* pSymbolTemplate)
 {
 
-	//
-	// TODO: 在此添加代码
-	//
+    RuleSymbol* copySymbol = CreateSymbol();
+    const RuleSymbol* copy = pSymbolTemplate;
+
+    copySymbol->isToken = copy->isToken;
+    strcpy(copySymbol->TokenName, copy->TokenName);
+    copySymbol->pRule = copy->pRule;
+
+    return copySymbol;
 
 }
 
@@ -103,9 +108,17 @@ RuleSymbol* CopySymbol(const RuleSymbol* pSymbolTemplate)
 RuleSymbol* CopySelect(const RuleSymbol* pSelectTemplate)
 {
 
-	//
-	// TODO: 在此添加代码
-	//
+    RuleSymbol* copySymbol = CopySymbol(pSelectTemplate);
+    RuleSymbol* copy = copySymbol;  // 游标
+
+    while (pSelectTemplate->pNextSymbol != NULL)
+    {
+        copy->pNextSymbol = CopySymbol(pSelectTemplate->pNextSymbol);
+        pSelectTemplate = pSelectTemplate->pNextSymbol;
+        copy = copy->pNextSymbol;
+    }
+
+    return copySymbol;
 
 }
 
@@ -124,17 +137,29 @@ RuleSymbol* CopySelect(const RuleSymbol* pSelectTemplate)
 RuleSymbol* ReplaceSelect(const RuleSymbol* pSelectTemplate)
 {
 
-    // 获得A的关系式
-    RuleSymbol* getRuleSymbol = pSelectTemplate->pRule->pFirstSymbol;
+    RuleSymbol* pNewSymbol = pSelectTemplate->pRule->pFirstSymbol;
+    RuleSymbol* getCopySymbol = CopySelect(pNewSymbol);
+    RuleSymbol* pSelect = getCopySymbol;
 
-    RuleSymbol* pNewSymbol = CreateSymbol();
-	pNewSymbol = getRuleSymbol;
-	RuleSymbol* lastSymbol = pSelectTemplate->pNextSymbol;
-	while (pNewSymbol != NULL)
+    while (pNewSymbol->pOther != NULL)
     {
-	    AddSymbolToSelect(pNewSymbol, lastSymbol);
-	    pNewSymbol = pNewSymbol->pOther;
+        pSelect->pOther = CopySelect(pNewSymbol->pOther);
+        pSelect = pSelect->pOther;
+        pNewSymbol = pNewSymbol->pOther;
     }
+
+    pSelect = getCopySymbol;
+
+    RuleSymbol* aNewSymbol;
+    aNewSymbol = CopySelect(pSelectTemplate->pNextSymbol);
+    while (pSelect != NULL)
+    {
+        AddSymbolToSelect(pSelect, aNewSymbol);
+        PrintRule(pSelectTemplate->pRule);
+        pSelect = pSelect->pOther;
+    }
+
+    return getCopySymbol;
 
 }
 
@@ -260,9 +285,7 @@ void RemoveLeftRecursion(Rule* pHead)
 
 					// 使用新的 Selects 替换原有的 Select，并调用 FreeSelect 函数释放原有的 Select 内存
 
-					//
-					// TODO: 在此添加代码
-					//
+
 
 					break;
 				}
