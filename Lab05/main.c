@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
 	//
 	// 调用 InitRules 函数初始化文法
 	//
-	
+
 #ifdef CODECODE_CI
 	Rule* pHead = InitRules_CI();  	// 此行代码在线上流水线运行
 #else
@@ -30,13 +30,13 @@ int main(int argc, char* argv[])
 	// 调用 RemoveLeftRecursion 函数消除文法中的左递归
 	//
 	RemoveLeftRecursion(pHead);
-	
+
 	//
 	// 输出消除左递归之后的文法
 	//
 	printf("\nAfter Remove Left Recursion:\n");
 	PrintRule(pHead);
-	
+
 	return 0;
 }
 
@@ -68,7 +68,7 @@ int SymbolNeedReplace(const Rule* pCurRule, const RuleSymbol* pSymbol)
     }
 
 	return 1;
-	
+
 }
 
 /*
@@ -77,7 +77,7 @@ int SymbolNeedReplace(const Rule* pCurRule, const RuleSymbol* pSymbol)
 
 参数：
 	pSymbolTemplate -- 需要被拷贝的 Symbol 指针。
-	  
+
 返回值：
 	拷贝获得的新 Symbol 的指针。
 */
@@ -96,7 +96,7 @@ RuleSymbol* CopySymbol(const RuleSymbol* pSymbolTemplate)
 
 参数：
 	pSelectTemplate -- 需要被拷贝的 Select 指针。
-	  
+
 返回值：
 	拷贝获得的新 Select 的指针。
 */
@@ -115,7 +115,7 @@ RuleSymbol* CopySelect(const RuleSymbol* pSelectTemplate)
 
 参数：
 	pSelectTemplate -- 需要被替换的 Select 指针。
-	  
+
 返回值：
 	替换后获得的新 Select 的指针。
 	注意，替换后可能会有一个新的 Select，
@@ -124,9 +124,17 @@ RuleSymbol* CopySelect(const RuleSymbol* pSelectTemplate)
 RuleSymbol* ReplaceSelect(const RuleSymbol* pSelectTemplate)
 {
 
-	//
-	// TODO: 在此添加代码
-	//
+    // 获得A的关系式
+    RuleSymbol* getRuleSymbol = pSelectTemplate->pRule->pFirstSymbol;
+
+    RuleSymbol* pNewSymbol = CreateSymbol();
+	pNewSymbol = getRuleSymbol;
+	RuleSymbol* lastSymbol = pSelectTemplate->pNextSymbol;
+	while (pNewSymbol != NULL)
+    {
+	    AddSymbolToSelect(pNewSymbol, lastSymbol);
+	    pNewSymbol = pNewSymbol->pOther;
+    }
 
 }
 
@@ -152,7 +160,7 @@ void FreeSelect(RuleSymbol* pSelect)
 
 参数：
 	prRule -- Rule 指针。
-	  
+
 返回值：
 	存在返回 1。
 	不存在返回 0。
@@ -176,6 +184,11 @@ int RuleHasLeftRecursion(Rule* pRule)
 */
 void AddSymbolToSelect(RuleSymbol* pSelect, RuleSymbol* pNewSymbol)
 {
+    while (pSelect->pNextSymbol != NULL)
+    {
+        pSelect = pSelect->pNextSymbol;
+    }
+
     pSelect->pNextSymbol = pNewSymbol;
 }
 
@@ -189,10 +202,22 @@ void AddSymbolToSelect(RuleSymbol* pSelect, RuleSymbol* pNewSymbol)
 */
 void AddSelectToRule(Rule* pRule, RuleSymbol* pNewSelect)
 {
+    if (pNewSelect == NULL)
+    {
+        // 创建ε
+        RuleSymbol* aNewSymbol = CreateSymbol();
+        aNewSymbol->isToken = 1;
+        strcat(aNewSymbol->TokenName, VoidSymbol);
 
-	//
-	// TODO: 在此添加代码
-	//
+        RuleSymbol* pSelect = pRule->pFirstSymbol;
+        while (pSelect->pOther)
+        {
+            pSelect = pSelect->pOther;
+        }
+
+        pSelect->pOther = aNewSymbol;
+    }
+
 
 }
 
@@ -234,10 +259,10 @@ void RemoveLeftRecursion(Rule* pHead)
 					RuleSymbol* pNewSelects = ReplaceSelect(pSelect);
 
 					// 使用新的 Selects 替换原有的 Select，并调用 FreeSelect 函数释放原有的 Select 内存
-					
+
 					//
 					// TODO: 在此添加代码
-					//					
+					//
 
 					break;
 				}
@@ -263,89 +288,57 @@ void RemoveLeftRecursion(Rule* pHead)
 		pSelectPrePtr = &pRule->pFirstSymbol;
 		while (pSelect != NULL) // 循环处理所有的 Select
 		{
+		    // 创建对应A', B'
+            RuleSymbol* aNewSymbol;
+            aNewSymbol = CreateSymbol();
+            aNewSymbol->isToken = 0;
+            aNewSymbol->pRule = pNewRule;
+
 			if (0 == pSelect->isToken && pSelect->pRule == pRule) // Select 存在左递归
 			{
 				// 移除包含左递归的 Select，将其转换为右递归后添加到新 Rule 的末尾，并移动游标
 
                 // 将Symbol转化为右递归放入pNewRule
-                pNewRule->pFirstSymbol = pSelect->pNextSymbol;
-
-                RuleSymbol* getNewSymbol;
-                getNewSymbol = pSelect;
-                while (getNewSymbol->pNextSymbol != NULL)
+                if (pNewRule->pFirstSymbol == NULL)
                 {
-                    getNewSymbol = getNewSymbol->pNextSymbol;
+                    pNewRule->pFirstSymbol = pSelect->pNextSymbol;
+                    // 将对应的A',B'加入到新的Rule中
+                    AddSymbolToSelect(pNewRule->pFirstSymbol, aNewSymbol);
+                }
+                else
+                {
+                    pNewRule->pFirstSymbol->pOther = pSelect->pOther;
+                    // 将对应的A',B'加入到新的Rule中
+                    AddSymbolToSelect(pNewRule->pFirstSymbol->pOther, aNewSymbol);
                 }
 
-				// 将对应的A',B'加入到新的Rule中
-                RuleSymbol* aNewSymbol;
-                aNewSymbol = CreateSymbol();
-                aNewSymbol->isToken = 0;
-                aNewSymbol->pRule = pNewRule; 
-				AddSymbolToSelect(getNewSymbol, aNewSymbol);
-//				PrintRule(pNewRule);
-//				printf(" ");
-
                 // 删除其在原来的Rule中的位置
-                pSelect->pNextSymbol = pSelect->pOther->pNextSymbol;
-                pSelect->isToken = pSelect->pOther->isToken;
-                pSelect->TokenName[0] = pSelect->pOther->TokenName[0];
-                pSelect->pRule = pSelect->pOther->pRule;
-                pSelect->pOther = pSelect->pOther->pOther;
+                (*pSelectPrePtr) = pSelect->pOther;
             }
 			else // Select 不存在左递归
 			{
 				// 在没有左递归的 Select 末尾添加指向新 Rule 的非终结符，并移动游标
-                RuleSymbol* getNewSymbol;
-                getNewSymbol = pSelect;
-                while (getNewSymbol->pNextSymbol != NULL)
-                {
-                    getNewSymbol = getNewSymbol->pNextSymbol;
-                }
-
                 // 将对应的A',B'加入到新的Rule中
-                RuleSymbol* aNewSymbol;
-                aNewSymbol = CreateSymbol();
-                aNewSymbol->isToken = 0;
-                aNewSymbol->pRule = pNewRule;
-                AddSymbolToSelect(getNewSymbol, aNewSymbol);
+                AddSymbolToSelect(pSelect, aNewSymbol);
 
-//                Rule* pNewHead = CreateRule(pRule->RuleName);
-//                pNewHead->pFirstSymbol = pSelect;
-//                PrintRule(pNewHead);
-
-//                TODO 修改
-                pSelect = pSelect->pOther;
+                // 移动游标
+                pSelectPrePtr = &((*pSelectPrePtr)->pOther);
             }
-		}
+            pSelect = pSelect->pOther;
+        }
 
         // 在新 Rule 的最后加入ε(用 '$' 代替)
         // 将新 Rule 插入文法链表
 
-        RuleSymbol* getNewSymbol;
-        getNewSymbol = pNewRule->pFirstSymbol;
-        while (getNewSymbol->pOther != NULL)
-        {
-            getNewSymbol = getNewSymbol->pOther;
-        }
-//        AddSelectToRule(pNewRule, getNewSymbol);
+        // 添加ε
+        AddSelectToRule(pNewRule, NULL);
 
-        // 创建ε
-        RuleSymbol* aNewSymbol = CreateSymbol();
-        aNewSymbol->isToken = 1;
-        strcat(aNewSymbol->TokenName, VoidSymbol);
+        pNewRule->pNextRule = pRule->pNextRule;
+        pRule->pNextRule = pNewRule;
 
-        getNewSymbol->pOther = aNewSymbol;
+        pRule = pNewRule;
 
-		Rule* copyNewRule = pRule->pNextRule;
-		pRule->pNextRule = pNewRule;
-		pNewRule->pNextRule = copyNewRule;
-
-		PrintRule(pRule);
-		printf(" ");
 	}
-	PrintRule(pHead);
-	printf(" ");
 }
 
 /*
@@ -370,28 +363,28 @@ typedef struct _RULE_ENTRY
 static const RULE_ENTRY rule_table[] =
 {
 	/* A -> Ba | Aa | c */
-	{ "A", 
+	{ "A",
 			{
 				{ { 0, "B" }, { 1, "a"} },
 				{ { 0, "A" }, { 1, "a"} },
 				{ { 1, "c" } }
-			}	
+			}
 	},
 
 	/* B -> Bb | Ab | d */
-	{ "B", 
+	{ "B",
 			{
 				{ { 0, "B" }, { 1, "b"} },
 				{ { 0, "A" }, { 1, "b"} },
 				{ { 1, "d" } }
-			}	
+			}
 	}
 };
 
 /*
 功能：
 	初始化文法链表。
-	
+
 返回值：
 	文法的头指针。
 */
@@ -435,10 +428,10 @@ Rule* InitRules()
 						exit(1);
 					}
 				}
-				
+
 				pSymbolPtr2 = &(*pSymbolPtr2)->pNextSymbol;
 			}
-			
+
 			pSymbolPtr1 = &(*pSymbolPtr1)->pOther;
 		}
 
@@ -451,7 +444,7 @@ Rule* InitRules()
 /*
 功能：
 	初始化文法链表(在执行流水线时调用)。
-	
+
 返回值：
 	文法的头指针。
 */
@@ -460,13 +453,13 @@ Rule* InitRules_CI()
 	int nRuleCount = 0;
 	for (int i = 0; i < 20; i++)
 	{
-		gets(rule_table_ci[i]);	
+		gets(rule_table_ci[i]);
 		int length = strlen(rule_table_ci[i]);
 		if (length == 0)
 		{
 			break;
 		}
-		
+
 		for (int j = 0; j < length; j++)
 		{
 			if (rule_table_ci[i][j] == ' ')
@@ -475,14 +468,14 @@ Rule* InitRules_CI()
 				break;
 			}
 			ruleNameArr[i][j]= rule_table_ci[i][j];
-		}	  
-		
+		}
+
 		nRuleCount++;
 	}
-			
+
 	Rule *pHead, *pRule;
 	RuleSymbol **pSymbolPtr1, **pSymbolPtr2;
-		
+
 	int i, j, k;
 
 	Rule** pRulePtr = &pHead;
@@ -496,20 +489,20 @@ Rule* InitRules_CI()
 	for (i=0; i<nRuleCount; i++)
 	{
 		pSymbolPtr1 = &pRule->pFirstSymbol;
-		
+
 		int start = 0;
 		for (int j=0; rule_table_ci[i][j] != '\0'; j++)
 		{
 			if (rule_table_ci[i][j] == ' '
 			 && rule_table_ci[i][j + 1] == '-'
-			&& rule_table_ci[i][j + 2] == '>' 
+			&& rule_table_ci[i][j + 2] == '>'
 			&& rule_table_ci[i][j + 3] == ' ')
 			{
 				start = j + 4;
 				break;
 			}
 		}
-			
+
 		for (k = start; rule_table_ci[i][k] != '\0'; k++)
 		{
 			if (rule_table_ci[i][k] == '|')
@@ -528,7 +521,7 @@ Rule* InitRules_CI()
 			}
 
 			*pSymbolPtr2 = CreateSymbol();
-			
+
 			char tokenName[MAX_STR_LENGTH] = {};
 			tokenName[0] = rule_table_ci[i][k];
 			tokenName[1] = '\0';
@@ -550,11 +543,11 @@ Rule* InitRules_CI()
 			{
 				strcpy((*pSymbolPtr2)->TokenName, tokenName);
 			}
-			
+
 			pSymbolPtr2 = &(*pSymbolPtr2)->pNextSymbol;
-			
+
 		}
-			
+
 		pRule = pRule->pNextRule;
 	}
 
@@ -567,7 +560,7 @@ Rule* InitRules_CI()
 
 参数：
 	pRuleName -- 文法的名字。
-	
+
 返回值：
 	Rule 指针
 */
@@ -585,9 +578,9 @@ Rule* CreateRule(const char* pRuleName)
 /*
 功能：
 	创建一个新的 Symbol。
-	
+
 返回值：
-	RuleSymbol 指针	
+	RuleSymbol 指针
 */
 RuleSymbol* CreateSymbol()
 {
@@ -609,9 +602,9 @@ RuleSymbol* CreateSymbol()
 参数：
 	pHead -- 文法的头指针。
 	RuleName -- 文法的名字。
-	
+
 返回值：
-	Rule 指针	
+	Rule 指针
 */
 Rule* FindRule(Rule* pHead, const char* RuleName)
 {
@@ -623,9 +616,9 @@ Rule* FindRule(Rule* pHead, const char* RuleName)
 			break;
 		}
 	}
-	
+
 	return pRule;
-}	
+}
 
 /*
 功能：
