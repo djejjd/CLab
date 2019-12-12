@@ -79,7 +79,38 @@ RuleSymbol* GetSymbol(RuleSymbol* pSelect, int index)
 int LeftFactorMaxLength(RuleSymbol* pSelectTemplate)
 {
 
-    // TODO
+    // 模板
+    RuleSymbol* template = pSelectTemplate;
+    RuleSymbol* pFirstSymbol = template;  // 游标
+
+    RuleSymbol* pSelect = pSelectTemplate->pOther;  // 游标
+    int length = 0;  // 左因子最大长度
+
+    while (pSelect != NULL)
+    {
+        int i = 0;
+
+        while (GetSymbol(pFirstSymbol, i) != NULL && GetSymbol(pSelect, i) != NULL)
+        {
+            RuleSymbol* pASymbol = GetSymbol(pFirstSymbol, i);
+            RuleSymbol* pBSymbol = GetSymbol(pSelect, i);
+            if (SymbolCmp(pASymbol, pBSymbol))
+            {
+                i++;
+            }
+            else
+            {
+                if (i > length)
+                {
+                    length = i;
+                }
+                break;
+            }
+        }
+        pSelect = pSelect->pOther;
+    }
+
+    return length;
 
 }
 
@@ -99,7 +130,7 @@ int SymbolCmp(RuleSymbol* pSymbol1, RuleSymbol* pSymbol2)
 
 	if (pSymbol1->isToken == 1)
     {
-	    if (!strcmp(pSymbol1->TokenName, pSymbol2->TokenName))
+	    if (0 == strcmp(pSymbol1->TokenName, pSymbol2->TokenName))
         {
             return 1;
         }
@@ -215,6 +246,57 @@ void GetUniqueRuleName(Rule* pHead, char* pRuleName)
 
 /*
 功能：
+	拷贝一个 Symbol。
+
+参数：
+	pSymbolTemplate -- 需要被拷贝的 Symbol 指针。
+
+返回值：
+	拷贝获得的新 Symbol 的指针。
+*/
+RuleSymbol* CopySymbol(const RuleSymbol* pSymbolTemplate)
+{
+
+    RuleSymbol* copySymbol = CreateSymbol();
+    const RuleSymbol* copy = pSymbolTemplate;
+
+    copySymbol->isToken = copy->isToken;
+    strcpy(copySymbol->TokenName, copy->TokenName);
+    copySymbol->pRule = copy->pRule;
+
+    return copySymbol;
+
+}
+
+/*
+功能：
+	拷贝一个 Select。
+
+参数：
+	pSelectTemplate -- 需要被拷贝的 Select 指针。
+
+返回值：
+	拷贝获得的新 Select 的指针。
+*/
+RuleSymbol* CopySelect(const RuleSymbol* pSelectTemplate)
+{
+
+    RuleSymbol* copySymbol = CopySymbol(pSelectTemplate);
+    RuleSymbol* copy = copySymbol;  // 游标
+
+    while (pSelectTemplate->pNextSymbol != NULL)
+    {
+        copy->pNextSymbol = CopySymbol(pSelectTemplate->pNextSymbol);
+        pSelectTemplate = pSelectTemplate->pNextSymbol;
+        copy = copy->pNextSymbol;
+    }
+
+    return copySymbol;
+
+}
+
+/*
+功能：
 	释放一个 Select 的内存。
 
 参数：
@@ -265,11 +347,16 @@ void PickupLeftFactor(Rule* pHead)
 			isChange = 1; // 设置标志
 
 			// 调用 AddSelectToRule 函数把模板左因子之后的部分加到新 Rule 的末尾
-			// 将模板左因子之后的部分替换为指向新 Rule 的非终结符
-			
-			//
-			// TODO: 在此添加代码
-			//
+            pSelect = pSelectTemplate;  // pSelect此时为游标
+
+            RuleSymbol* pNewSymbol = GetSymbol(pSelect, Count);
+            pNewRule->pFirstSymbol = CopySelect(pNewSymbol);
+
+            // 将模板左因子之后的部分替换为指向新 Rule 的非终结符
+            pNewSymbol->pNextSymbol = NULL;
+            pNewSymbol->isToken = 0;
+            pNewSymbol->pRule = pNewRule;
+
 
 			// 从模板之后的位置循环查找包含左因子的 Select，并提取左因子
 			pSelect = pSelectTemplate->pOther;
@@ -280,28 +367,24 @@ void PickupLeftFactor(Rule* pHead)
 				{
 					// 调用 AddSelectToRule 函数把左因子之后的部分加到新 Rule 的末尾
 					// 将该 Select 从 Rule 中移除，释放内存，并移动游标
-					
-					//
-					// TODO: 在此添加代码
-					//
-					
+					pNewSymbol = GetSymbol(pSelect, Count);
+					AddSelectToRule(pNewRule, pNewSymbol);
+                    (*pSelectPtr) = pSelect->pOther;
+
 				}
 				else // Select 不包含左因子
 				{
 					// 移动游标
-					
-					//
-					// TODO: 在此添加代码
-					//
+                    pSelectPtr = &((*pSelectPtr)->pOther);
 					
 				}
+				pSelect = pSelect->pOther;
 			}
+
 
 			// 将新 Rule 加入到文法链表
 			
-			//
-			// TODO: 在此添加代码
-			//
+			pRule->pNextRule = pNewRule;
 		}
 
 	} while (isChange == 1);
