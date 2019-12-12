@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/d/Projects/CLionProjects/CLab/Lab06/PickupLeftFactor.h
+stdio.h
+-
+
+/cygdrive/d/Projects/CLionProjects/CLab/Lab06/main.c
+PickupLeftFactor.h
+/cygdrive/d/Projects/CLionProjects/CLab/Lab06/PickupLeftFactor.h
+string.h
+-
+stdlib.h
+-
+
