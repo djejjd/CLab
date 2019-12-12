@@ -171,13 +171,6 @@ RuleSymbol* ReplaceSelect(const RuleSymbol* pSelectTemplate)
 */
 void FreeSelect(RuleSymbol* pSelect)
 {
-    RuleSymbol* temp;
-    while (pSelect != NULL)
-    {
-        temp = pSelect;
-        free(temp);
-        pSelect = pSelect->pOther;
-    }
 
     free(pSelect);
 
@@ -304,6 +297,7 @@ void RemoveLeftRecursion(Rule* pHead)
 
 					// 调用 ReplaceSelect 函数，替换 Select 的第一个 Symbol 后得到新的 Selects
 					RuleSymbol* pNewSelects = ReplaceSelect(pSelect);
+					
 
 					// 使用新的 Selects 替换原有的 Select，并调用 FreeSelect 函数释放原有的 Select 内存
 					// 将原来Select中的pOther提取出来
