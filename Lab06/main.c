@@ -10,33 +10,33 @@ char ruleNameArr[20][64];
 
 int main(int argc, char* argv[])
 {
-	//
-	// 调用 InitRules 函数初始化文法
-	//
+    //
+    // 调用 InitRules 函数初始化文法
+    //
 #ifdef CODECODE_CI
-	Rule* pHead = InitRules_CI();  	// 此行代码在线上流水线运行
+    Rule* pHead = InitRules_CI();  	// 此行代码在线上流水线运行
 #else
-	Rule* pHead = InitRules();		// 此行代码在 CP Lab 中运行
+    Rule* pHead = InitRules();		// 此行代码在 CP Lab 中运行
 #endif
 
-	//
-	// 输出提取左因子之前的文法
-	//
-	printf("Before Pickup Left Factor:\n");
-	PrintRule(pHead);
+    //
+    // 输出提取左因子之前的文法
+    //
+    printf("Before Pickup Left Factor:\n");
+    PrintRule(pHead);
 
-	//
-	// 调用 PickupLeftFactor 函数对文法提取左因子
-	//
-	PickupLeftFactor(pHead);
-	
-	//
-	// 输出提取左因子之后的文法
-	//
-	printf("\nAfter Pickup Left Factor:\n");
-	PrintRule(pHead);
-	
-	return 0;
+    //
+    // 调用 PickupLeftFactor 函数对文法提取左因子
+    //
+    PickupLeftFactor(pHead);
+
+    //
+    // 输出提取左因子之后的文法
+    //
+    printf("\nAfter Pickup Left Factor:\n");
+    PrintRule(pHead);
+
+    return 0;
 }
 
 /*
@@ -52,18 +52,18 @@ int main(int argc, char* argv[])
 */
 RuleSymbol* GetSymbol(RuleSymbol* pSelect, int index)
 {
-	int i = 0;
-	RuleSymbol* pRuleSymbol;
-	for (pRuleSymbol = pSelect, i = 0; pRuleSymbol != NULL; 
-		pRuleSymbol = pRuleSymbol->pNextSymbol, i++)
-	{
-		if (i == index)
-		{
-			return pRuleSymbol;
-		}
-	}
+    int i = 0;
+    RuleSymbol* pRuleSymbol;
+    for (pRuleSymbol = pSelect, i = 0; pRuleSymbol != NULL;
+         pRuleSymbol = pRuleSymbol->pNextSymbol, i++)
+    {
+        if (i == index)
+        {
+            return pRuleSymbol;
+        }
+    }
 
-	return NULL;	
+    return NULL;
 }
 
 /*
@@ -128,25 +128,25 @@ int LeftFactorMaxLength(RuleSymbol* pSelectTemplate)
 int SymbolCmp(RuleSymbol* pSymbol1, RuleSymbol* pSymbol2)
 {
 
-	if (pSymbol1->isToken == 1)
+    if (pSymbol1->isToken == 1)
     {
-	    if (0 == strcmp(pSymbol1->TokenName, pSymbol2->TokenName))
+        if (0 == strcmp(pSymbol1->TokenName, pSymbol2->TokenName))
         {
             return 1;
         }
 
     }
-	else
+    else
     {
-	    if (!strcmp(pSymbol1->pRule->RuleName, pSymbol2->pRule->RuleName))
+        if (0 == strcmp(pSymbol1->pRule->RuleName, pSymbol2->pRule->RuleName))
         {
-	        return 1;
+            return 1;
         }
 
     }
 
-	return 0;
-	
+    return 0;
+
 }
 
 /*
@@ -157,36 +157,36 @@ int SymbolCmp(RuleSymbol* pSymbol1, RuleSymbol* pSymbol2)
 	pSelectTemplate -- 作为模板的 Select 指针。
 	Count -- SelectTemplate 中已确定的左因子的数量。
 	pSelect -- Select 指针。
-	  
+
 返回值：
 	如果 Select 包含左因子返回 1，否则返回 0。
 */
 int NeedPickup(RuleSymbol* pSelectTemplate, int Count, RuleSymbol* pSelect)
 {
 
-	int i;
-	for (i=0; i<Count; i++)
+    int i;
+    for (i=0; i<Count; i++)
     {
-	    if (pSelectTemplate->isToken == pSelect->isToken)
+        if (pSelectTemplate->isToken == pSelect->isToken)
         {
-	        if (SymbolCmp(pSelectTemplate, pSelect))
+            if (SymbolCmp(pSelectTemplate, pSelect))
             {
-	            pSelectTemplate = pSelectTemplate->pNextSymbol;
-	            pSelect = pSelect->pNextSymbol;
+                pSelectTemplate = pSelectTemplate->pNextSymbol;
+                pSelect = pSelect->pNextSymbol;
             }
-	        else
+            else
             {
-	            return 0;
+                return 0;
             }
         }
-	    else
+        else
         {
-	        return 0;
+            return 0;
         }
     }
 
-	return 1;
-	
+    return 1;
+
 }
 
 /*
@@ -218,7 +218,7 @@ void AddSelectToRule(Rule* pRule, RuleSymbol* pNewSelect)
     {
         pSelect->pOther = pNewSelect;
     }
-	
+
 }
 
 /*
@@ -231,17 +231,17 @@ void AddSelectToRule(Rule* pRule, RuleSymbol* pNewSelect)
 */
 void GetUniqueRuleName(Rule* pHead, char* pRuleName)
 {
-	Rule* pRuleCursor = pHead;
-	for (; pRuleCursor != NULL;)
-	{
-		if (0 == strcmp(pRuleCursor->RuleName, pRuleName))
-		{
-			strcat(pRuleName, Postfix);
-			pRuleCursor = pHead;
-			continue;
-		}
-		pRuleCursor = pRuleCursor->pNextRule;
-	}	
+    Rule* pRuleCursor = pHead;
+    for (; pRuleCursor != NULL;)
+    {
+        if (0 == strcmp(pRuleCursor->RuleName, pRuleName))
+        {
+            strcat(pRuleName, Postfix);
+            pRuleCursor = pHead;
+            continue;
+        }
+        pRuleCursor = pRuleCursor->pNextRule;
+    }
 }
 
 /*
@@ -305,7 +305,7 @@ RuleSymbol* CopySelect(const RuleSymbol* pSelectTemplate)
 void FreeSelect(RuleSymbol* pSelect)
 {
 
-	free(pSelect);
+    free(pSelect);
 
 }
 
@@ -318,35 +318,35 @@ void FreeSelect(RuleSymbol* pSelect)
 */
 void PickupLeftFactor(Rule* pHead)
 {
-	Rule* pRule;		    	 // Rule 游标
-	int isChange;				 // Rule 是否被提取左因子的标志
-	RuleSymbol* pSelectTemplate; // Select 游标
-	Rule* pNewRule; 			 // Rule 指针
-	RuleSymbol* pSelect;		 // Select 游标
-	
-		do
-	{
-		isChange = 0;
+    Rule* pRule;		    	 // Rule 游标
+    int isChange;				 // Rule 是否被提取左因子的标志
+    RuleSymbol* pSelectTemplate; // Select 游标
+    Rule* pNewRule; 			 // Rule 指针
+    RuleSymbol* pSelect;		 // Select 游标
 
-		for(pRule = pHead; pRule != NULL; pRule = pRule->pNextRule)
-		{
-			// 取 Rule 中的一个 Select 作为模板，调用 LeftFactorMaxLength 函数确定左因子的最大长度
-			int Count = 0;
-			for(pSelectTemplate = pRule->pFirstSymbol; pSelectTemplate != NULL; pSelectTemplate = pSelectTemplate->pOther)
-			{
-				if((Count = LeftFactorMaxLength(pSelectTemplate)) > 0)
-					break;
-			}
+    do
+    {
+        isChange = 0;
 
-			// 忽略没用左因子的 Rule
-			if(Count == 0)
-				continue;
+        for(pRule = pHead; pRule != NULL; pRule = pRule->pNextRule)
+        {
+            // 取 Rule 中的一个 Select 作为模板，调用 LeftFactorMaxLength 函数确定左因子的最大长度
+            int Count = 0;
+            for(pSelectTemplate = pRule->pFirstSymbol; pSelectTemplate != NULL; pSelectTemplate = pSelectTemplate->pOther)
+            {
+                if((Count = LeftFactorMaxLength(pSelectTemplate)) > 0)
+                    break;
+            }
 
-			pNewRule = CreateRule(pRule->RuleName); // 创建新 Rule
-			GetUniqueRuleName(pRule, pNewRule->RuleName);
-			isChange = 1; // 设置标志
+            // 忽略没用左因子的 Rule
+            if(Count == 0)
+                continue;
 
-			// 调用 AddSelectToRule 函数把模板左因子之后的部分加到新 Rule 的末尾
+            pNewRule = CreateRule(pRule->RuleName); // 创建新 Rule
+            GetUniqueRuleName(pRule, pNewRule->RuleName);
+            isChange = 1; // 设置标志
+
+            // 调用 AddSelectToRule 函数把模板左因子之后的部分加到新 Rule 的末尾
             pSelect = pSelectTemplate;  // pSelect此时为游标
 
             RuleSymbol* pNewSymbol = GetSymbol(pSelect, Count);
@@ -358,36 +358,38 @@ void PickupLeftFactor(Rule* pHead)
             pNewSymbol->pRule = pNewRule;
 
 
-			// 从模板之后的位置循环查找包含左因子的 Select，并提取左因子
-			pSelect = pSelectTemplate->pOther;
-			RuleSymbol **pSelectPtr = &pSelectTemplate->pOther;
-			while(pSelect != NULL)
-			{
-				if(NeedPickup(pSelectTemplate, Count, pSelect)) // Select 包含左因子
-				{
-					// 调用 AddSelectToRule 函数把左因子之后的部分加到新 Rule 的末尾
-					// 将该 Select 从 Rule 中移除，释放内存，并移动游标
-					pNewSymbol = GetSymbol(pSelect, Count);
-					AddSelectToRule(pNewRule, pNewSymbol);
+            // 从模板之后的位置循环查找包含左因子的 Select，并提取左因子
+            pSelect = pSelectTemplate->pOther;
+            RuleSymbol **pSelectPtr = &pSelectTemplate->pOther;
+            while(pSelect != NULL)
+            {
+                if(NeedPickup(pSelectTemplate, Count, pSelect)) // Select 包含左因子
+                {
+                    // 调用 AddSelectToRule 函数把左因子之后的部分加到新 Rule 的末尾
+                    // 将该 Select 从 Rule 中移除，释放内存，并移动游标
+                    RuleSymbol* getNewSymbol = GetSymbol(pSelect, Count);
+                    AddSelectToRule(pNewRule, getNewSymbol);
                     (*pSelectPtr) = pSelect->pOther;
+                    RuleSymbol* freeSelect = CopySelect(pSelect);
+                    FreeSelect(freeSelect);
 
-				}
-				else // Select 不包含左因子
-				{
-					// 移动游标
+                }
+                else // Select 不包含左因子
+                {
+                    // 移动游标
                     pSelectPtr = &((*pSelectPtr)->pOther);
-					
-				}
-				pSelect = pSelect->pOther;
-			}
+
+                }
+                pSelect = pSelect->pOther;
+            }
 
 
-			// 将新 Rule 加入到文法链表
-			
-			pRule->pNextRule = pNewRule;
-		}
+            // 将新 Rule 加入到文法链表
 
-	} while (isChange == 1);
+            pRule->pNextRule = pNewRule;
+        }
+
+    } while (isChange == 1);
 }
 
 /*
@@ -399,27 +401,27 @@ void PickupLeftFactor(Rule* pHead)
 */
 typedef struct _SYMBOL
 {
-	int isToken;
-	char Name[MAX_STR_LENGTH];
+    int isToken;
+    char Name[MAX_STR_LENGTH];
 }SYMBOL;
 
 typedef struct _RULE_ENTRY
 {
-	char RuleName[MAX_STR_LENGTH];
-	SYMBOL Selects[64][64];
+    char RuleName[MAX_STR_LENGTH];
+    SYMBOL Selects[64][64];
 }RULE_ENTRY;
 
 static const RULE_ENTRY rule_table[] =
-{
-	/* A -> abC | abcD | abcE */
-	{ "A", 
-			{
-				{ { 1, "a" }, { 1, "b" }, { 1, "C" } },
-				{ { 1, "a" }, { 1, "b" }, { 1, "c" }, { 1, "D" } },
-				{ { 1, "a" }, { 1, "b" }, { 1, "c" }, { 1, "E" } }
-			}	
-	}
-};
+        {
+                /* A -> abC | abcD | abcE */
+                { "A",
+                        {
+                                { { 1, "a" }, { 1, "b" }, { 1, "C" } },
+                                { { 1, "a" }, { 1, "b" }, { 1, "c" }, { 1, "D" } },
+                                { { 1, "a" }, { 1, "b" }, { 1, "c" }, { 1, "E" } }
+                        }
+                }
+        };
 
 /*
 功能：
@@ -430,54 +432,54 @@ static const RULE_ENTRY rule_table[] =
 */
 Rule* InitRules()
 {
-	Rule *pHead, *pRule;
-	RuleSymbol **pSymbolPtr1, **pSymbolPtr2;
-	int nRuleCount = sizeof(rule_table) / sizeof(rule_table[0]);
-	int i, j, k;
+    Rule *pHead, *pRule;
+    RuleSymbol **pSymbolPtr1, **pSymbolPtr2;
+    int nRuleCount = sizeof(rule_table) / sizeof(rule_table[0]);
+    int i, j, k;
 
-	Rule** pRulePtr = &pHead;
-	for (i=0; i<nRuleCount; i++)
-	{
-		*pRulePtr = CreateRule(rule_table[i].RuleName);
-		pRulePtr = &(*pRulePtr)->pNextRule;
-	}
+    Rule** pRulePtr = &pHead;
+    for (i=0; i<nRuleCount; i++)
+    {
+        *pRulePtr = CreateRule(rule_table[i].RuleName);
+        pRulePtr = &(*pRulePtr)->pNextRule;
+    }
 
-	pRule = pHead;
-	for (i=0; i<nRuleCount; i++)
-	{
-		pSymbolPtr1 = &pRule->pFirstSymbol;
-		for (j=0; rule_table[i].Selects[j][0].Name[0] != '\0'; j++)
-		{
-			pSymbolPtr2 = pSymbolPtr1;
-			for (k=0; rule_table[i].Selects[j][k].Name[0] != '\0'; k++)
-			{
-				const SYMBOL* pSymbol = &rule_table[i].Selects[j][k];
+    pRule = pHead;
+    for (i=0; i<nRuleCount; i++)
+    {
+        pSymbolPtr1 = &pRule->pFirstSymbol;
+        for (j=0; rule_table[i].Selects[j][0].Name[0] != '\0'; j++)
+        {
+            pSymbolPtr2 = pSymbolPtr1;
+            for (k=0; rule_table[i].Selects[j][k].Name[0] != '\0'; k++)
+            {
+                const SYMBOL* pSymbol = &rule_table[i].Selects[j][k];
 
-				*pSymbolPtr2 = CreateSymbol();
-				(*pSymbolPtr2)->isToken = pSymbol->isToken;
-				if (1 == pSymbol->isToken)
-				{
-					strcpy((*pSymbolPtr2)->TokenName, pSymbol->Name);
-				}
-				else
-				{
-					(*pSymbolPtr2)->pRule = FindRule(pHead, pSymbol->Name);
-					if (NULL == (*pSymbolPtr2)->pRule)
-					{
-						printf("Init rules error, miss rule \"%s\"\n", pSymbol->Name);
-						exit(1);
-					}
-				}
-				pSymbolPtr2 = &(*pSymbolPtr2)->pNextSymbol;
-			}
+                *pSymbolPtr2 = CreateSymbol();
+                (*pSymbolPtr2)->isToken = pSymbol->isToken;
+                if (1 == pSymbol->isToken)
+                {
+                    strcpy((*pSymbolPtr2)->TokenName, pSymbol->Name);
+                }
+                else
+                {
+                    (*pSymbolPtr2)->pRule = FindRule(pHead, pSymbol->Name);
+                    if (NULL == (*pSymbolPtr2)->pRule)
+                    {
+                        printf("Init rules error, miss rule \"%s\"\n", pSymbol->Name);
+                        exit(1);
+                    }
+                }
+                pSymbolPtr2 = &(*pSymbolPtr2)->pNextSymbol;
+            }
 
-			pSymbolPtr1 = &(*pSymbolPtr1)->pOther;
-		}
+            pSymbolPtr1 = &(*pSymbolPtr1)->pOther;
+        }
 
-		pRule = pRule->pNextRule;
-	}
+        pRule = pRule->pNextRule;
+    }
 
-	return pHead;
+    return pHead;
 }
 
 /*
@@ -489,108 +491,108 @@ Rule* InitRules()
 */
 Rule* InitRules_CI()
 {
-	int nRuleCount = 0;
-	for (int i = 0; i < 20; i++)
-	{
-		gets(rule_table_ci[i]);	
-		int length = strlen(rule_table_ci[i]);
-		if (length == 0)
-		{
-			break;
-		}
-		
-		for (int j = 0; j < length; j++)
-		{
-			if (rule_table_ci[i][j] == ' ')
-			{
-				ruleNameArr[i][j] = '\0';
-				break;
-			}
-			ruleNameArr[i][j]= rule_table_ci[i][j];
-		}	  
-		
-		nRuleCount++;
-	}
-			
-	Rule *pHead, *pRule;
-	RuleSymbol **pSymbolPtr1, **pSymbolPtr2;
-		
-	int i, j, k;
+    int nRuleCount = 0;
+    for (int i = 0; i < 20; i++)
+    {
+        gets(rule_table_ci[i]);
+        int length = strlen(rule_table_ci[i]);
+        if (length == 0)
+        {
+            break;
+        }
 
-	Rule** pRulePtr = &pHead;
-	for (i=0; i<nRuleCount; i++)
-	{
-		*pRulePtr = CreateRule(ruleNameArr[i]);
-		pRulePtr = &(*pRulePtr)->pNextRule;
-	}
+        for (int j = 0; j < length; j++)
+        {
+            if (rule_table_ci[i][j] == ' ')
+            {
+                ruleNameArr[i][j] = '\0';
+                break;
+            }
+            ruleNameArr[i][j]= rule_table_ci[i][j];
+        }
 
-	pRule = pHead;
-	for (i=0; i<nRuleCount; i++)
-	{
-		pSymbolPtr1 = &pRule->pFirstSymbol;
-		
-		int start = 0;
-		for (int j=0; rule_table_ci[i][j] != '\0'; j++)
-		{
-			if (rule_table_ci[i][j] == ' '
-			 && rule_table_ci[i][j + 1] == '-'
-			&& rule_table_ci[i][j + 2] == '>' 
-			&& rule_table_ci[i][j + 3] == ' ')
-			{
-				start = j + 4;
-				break;
-			}
-		}
-			
-		for (k = start; rule_table_ci[i][k] != '\0'; k++)
-		{
-			if (rule_table_ci[i][k] == '|')
-			{
-				pSymbolPtr1 = &(*pSymbolPtr1)->pOther;
-				pSymbolPtr2 = pSymbolPtr1;
-				continue;
-			}
-			if (rule_table_ci[i][k] == ' ')
-			{
-				continue;
-			}
-			if (k == start)
-			{
-				pSymbolPtr2 = pSymbolPtr1;
-			}
+        nRuleCount++;
+    }
 
-			*pSymbolPtr2 = CreateSymbol();
-			
-			char tokenName[MAX_STR_LENGTH] = {};
-			tokenName[0] = rule_table_ci[i][k];
-			tokenName[1] = '\0';
-			(*pSymbolPtr2)->isToken = 1;
-			for (int m = 0; m < nRuleCount; m++)
-			{
-				if (strcmp(tokenName, ruleNameArr[m]) == 0)
-				{
-					(*pSymbolPtr2)->isToken = 0;
-					(*pSymbolPtr2)->pRule = FindRule(pHead, tokenName);
-					if (NULL == (*pSymbolPtr2)->pRule)
-					{
-						printf("Init rules error, miss rule \"%s\"\n", tokenName);
-						exit(1);
-					}
-				}
-			}
-			if ((*pSymbolPtr2)->isToken == 1)
-			{
-				strcpy((*pSymbolPtr2)->TokenName, tokenName);
-			}
-			
-			pSymbolPtr2 = &(*pSymbolPtr2)->pNextSymbol;
-			
-		}
-			
-		pRule = pRule->pNextRule;
-	}
+    Rule *pHead, *pRule;
+    RuleSymbol **pSymbolPtr1, **pSymbolPtr2;
 
-	return pHead;
+    int i, j, k;
+
+    Rule** pRulePtr = &pHead;
+    for (i=0; i<nRuleCount; i++)
+    {
+        *pRulePtr = CreateRule(ruleNameArr[i]);
+        pRulePtr = &(*pRulePtr)->pNextRule;
+    }
+
+    pRule = pHead;
+    for (i=0; i<nRuleCount; i++)
+    {
+        pSymbolPtr1 = &pRule->pFirstSymbol;
+
+        int start = 0;
+        for (int j=0; rule_table_ci[i][j] != '\0'; j++)
+        {
+            if (rule_table_ci[i][j] == ' '
+                && rule_table_ci[i][j + 1] == '-'
+                && rule_table_ci[i][j + 2] == '>'
+                && rule_table_ci[i][j + 3] == ' ')
+            {
+                start = j + 4;
+                break;
+            }
+        }
+
+        for (k = start; rule_table_ci[i][k] != '\0'; k++)
+        {
+            if (rule_table_ci[i][k] == '|')
+            {
+                pSymbolPtr1 = &(*pSymbolPtr1)->pOther;
+                pSymbolPtr2 = pSymbolPtr1;
+                continue;
+            }
+            if (rule_table_ci[i][k] == ' ')
+            {
+                continue;
+            }
+            if (k == start)
+            {
+                pSymbolPtr2 = pSymbolPtr1;
+            }
+
+            *pSymbolPtr2 = CreateSymbol();
+
+            char tokenName[MAX_STR_LENGTH] = {};
+            tokenName[0] = rule_table_ci[i][k];
+            tokenName[1] = '\0';
+            (*pSymbolPtr2)->isToken = 1;
+            for (int m = 0; m < nRuleCount; m++)
+            {
+                if (strcmp(tokenName, ruleNameArr[m]) == 0)
+                {
+                    (*pSymbolPtr2)->isToken = 0;
+                    (*pSymbolPtr2)->pRule = FindRule(pHead, tokenName);
+                    if (NULL == (*pSymbolPtr2)->pRule)
+                    {
+                        printf("Init rules error, miss rule \"%s\"\n", tokenName);
+                        exit(1);
+                    }
+                }
+            }
+            if ((*pSymbolPtr2)->isToken == 1)
+            {
+                strcpy((*pSymbolPtr2)->TokenName, tokenName);
+            }
+
+            pSymbolPtr2 = &(*pSymbolPtr2)->pNextSymbol;
+
+        }
+
+        pRule = pRule->pNextRule;
+    }
+
+    return pHead;
 }
 
 /*
@@ -605,13 +607,13 @@ Rule* InitRules_CI()
 */
 Rule* CreateRule(const char* pRuleName)
 {
-	Rule* pRule = (Rule*)malloc(sizeof(Rule));
+    Rule* pRule = (Rule*)malloc(sizeof(Rule));
 
-	strcpy(pRule->RuleName, pRuleName);
-	pRule->pFirstSymbol = NULL;
-	pRule->pNextRule = NULL;
+    strcpy(pRule->RuleName, pRuleName);
+    pRule->pFirstSymbol = NULL;
+    pRule->pNextRule = NULL;
 
-	return pRule;
+    return pRule;
 }
 
 /*
@@ -623,15 +625,15 @@ Rule* CreateRule(const char* pRuleName)
 */
 RuleSymbol* CreateSymbol()
 {
-	RuleSymbol* pSymbol = (RuleSymbol*)malloc(sizeof(RuleSymbol));
+    RuleSymbol* pSymbol = (RuleSymbol*)malloc(sizeof(RuleSymbol));
 
-	pSymbol->pNextSymbol = NULL;
-	pSymbol->pOther = NULL;
-	pSymbol->isToken = -1;
-	pSymbol->TokenName[0] = '\0';
-	pSymbol->pRule = NULL;
+    pSymbol->pNextSymbol = NULL;
+    pSymbol->pOther = NULL;
+    pSymbol->isToken = -1;
+    pSymbol->TokenName[0] = '\0';
+    pSymbol->pRule = NULL;
 
-	return pSymbol;
+    return pSymbol;
 }
 
 /*
@@ -647,16 +649,16 @@ RuleSymbol* CreateSymbol()
 */
 Rule* FindRule(Rule* pHead, const char* RuleName)
 {
-	Rule* pRule;
-	for (pRule = pHead; pRule != NULL; pRule = pRule->pNextRule)
-	{
-		if (0 == strcmp(pRule->RuleName, RuleName))
-		{
-			break;
-		}
-	}
+    Rule* pRule;
+    for (pRule = pHead; pRule != NULL; pRule = pRule->pNextRule)
+    {
+        if (0 == strcmp(pRule->RuleName, RuleName))
+        {
+            break;
+        }
+    }
 
-	return pRule;
+    return pRule;
 }
 
 /*
@@ -705,5 +707,5 @@ void PrintRule(Rule* pHead)
         printf("\n");
         pNewRule = pNewRule->pNextRule;
     }
-	
+
 }
