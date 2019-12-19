@@ -103,36 +103,37 @@ void RemoveLeftRecursion(Rule* pHead)
         lastSymbol->pRule = pNewRule;
 
 		if(0 == pSelect->isToken && pSelect->pRule == pHead)// Select 存在左递归
-		{
-			// 移除包含左递归的 Select，将其转换为右递归后添加到新 Rule 的末尾，并移动游标
-			if (pNewRule->pFirstSymbol == NULL)
-            {
-                pNewRule->pFirstSymbol = pSelect->pNextSymbol;
-                // 添加A'到末尾
-                AddSymbolToSelect(pNewRule->pFirstSymbol, lastSymbol);
-            }
-			else
-            {
-                pNewRule->pFirstSymbol->pOther = pSelect->pNextSymbol;
-                // 添加A'到末尾
-                AddSymbolToSelect(pNewRule->pFirstSymbol->pOther, lastSymbol);
-            }
-
-			// 删除原来的Select
-            (*pSelectPrePtr) = pSelect->pOther;
-
-        }
-		else // Select 不存在左递归
-		{
-            // 在没有左递归的 Select 末尾添加指向新 Rule 的非终结符，并移动游标
+    {
+        // 移除包含左递归的 Select，将其转换为右递归后添加到新 Rule 的末尾，并移动游标
+        // 第一次向新的Rule中加入右递归
+        if (pNewRule->pFirstSymbol == NULL)
+        {
+            pNewRule->pFirstSymbol = pSelect->pNextSymbol;
             // 添加A'到末尾
-            AddSymbolToSelect(pSelect, lastSymbol);
-            // 移动游标
-            pSelectPrePtr = &((*pSelectPrePtr)->pOther);
-
+            AddSymbolToSelect(pNewRule->pFirstSymbol, lastSymbol);
         }
-        pSelect = pSelect->pOther;
+        else  // 非第一次向新的Rule中添加右递归
+        {
+            pNewRule->pFirstSymbol->pOther = pSelect->pNextSymbol;
+            // 添加A'到末尾
+            AddSymbolToSelect(pNewRule->pFirstSymbol->pOther, lastSymbol);
+        }
+
+        // 删除原来的Select
+        (*pSelectPrePtr) = pSelect->pOther;
+
     }
+    else // Select 不存在左递归
+    {
+        // 在没有左递归的 Select 末尾添加指向新 Rule 的非终结符，并移动游标
+        // 添加A'到末尾
+        AddSymbolToSelect(pSelect, lastSymbol);
+        // 移动游标
+        pSelectPrePtr = &((*pSelectPrePtr)->pOther);
+
+    }
+    pSelect = pSelect->pOther;
+}
 
 	// 在新 Rule 的最后加入ε(用 '$' 代替)
 	// 将新 Rule 插入文法链表
@@ -145,6 +146,7 @@ void RemoveLeftRecursion(Rule* pHead)
     // 加入ε到pNewRule
     AddSelectToRule(pNewRule, creatLastSymbol);
 
+    // 将新的Rule加入到文法链表中
     pHead->pNextRule = pNewRule;
 	
 	return;
@@ -445,6 +447,7 @@ void PrintRule(Rule* pHead)
 	    while (pNewSymbol != NULL)
         {
 	        RuleSymbol* getNewSymbol = pNewSymbol;
+	        // 对Select中的Symbol进行循环
 	        while (getNewSymbol != NULL)
             {
 	            if (getNewSymbol->isToken == 1)

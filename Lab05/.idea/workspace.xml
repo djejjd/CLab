@@ -12,30 +12,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae4f52df-6a1b-4b49-89b1-b1258fda6be2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Lab01/cmake-build-debug/CMakeFiles/Lab01.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab01/cmake-build-debug/CMakeFiles/Lab01.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab01/cmake-build-debug/Lab01.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab01/cmake-build-debug/Lab01.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab01/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab01/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab04/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab04/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab04/cmake-build-debug/CMakeFiles/Lab04.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab04/cmake-build-debug/CMakeFiles/Lab04.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab04/cmake-build-debug/Lab04.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab04/cmake-build-debug/Lab04.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab04/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab04/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeCCompiler.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeSystem.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdC/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdC/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdC/a.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab05.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab05.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab05.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab05.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab05.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab05.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab05.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab05.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab05.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab05.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab05.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab05.dir/flags.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab05.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab05.dir/link.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab05.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab05.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Lab05.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Lab05.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Lab05.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Lab05.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab06/cmake-build-debug/CMakeFiles/Lab06.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab06/cmake-build-debug/CMakeFiles/Lab06.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab06/cmake-build-debug/Lab06.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab06/cmake-build-debug/Lab06.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab06/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab06/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +100,14 @@
       <workItem from="1575975126240" duration="7916000" />
       <workItem from="1576108687963" duration="196000" />
       <workItem from="1576111650329" duration="20000" />
+      <workItem from="1576133406044" duration="1056000" />
+      <workItem from="1576387194447" duration="5868000" />
+      <workItem from="1576561530769" duration="4739000" />
+      <workItem from="1576723119566" duration="624000" />
+      <workItem from="1576724963772" duration="530000" />
+      <workItem from="1576741979462" duration="690000" />
+      <workItem from="1576742991680" duration="9000" />
+      <workItem from="1576743241673" duration="63000" />
     </task>
     <task id="LOCAL-00001" summary="修改free函数">
       <created>1576108815831</created>
@@ -126,42 +131,42 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="201" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1576108814824" />
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1576111670289">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1576743303865">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1576111670289" />
-    <state width="450" height="553" key="GridCell.Tab.0.bottom" timestamp="1575983406513">
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1576743303865" />
+    <state width="1237" height="307" key="GridCell.Tab.0.bottom" timestamp="1576743303869">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="450" height="553" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1575983406513" />
-    <state width="450" height="553" key="GridCell.Tab.0.center" timestamp="1575983406512">
+    <state width="1237" height="307" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1576743303869" />
+    <state width="1237" height="307" key="GridCell.Tab.0.center" timestamp="1576743303869">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="450" height="553" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1575983406512" />
-    <state width="450" height="553" key="GridCell.Tab.0.left" timestamp="1575983406512">
+    <state width="1237" height="307" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1576743303869" />
+    <state width="1237" height="307" key="GridCell.Tab.0.left" timestamp="1576743303869">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="450" height="553" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1575983406512" />
-    <state width="450" height="553" key="GridCell.Tab.0.right" timestamp="1575983406512">
+    <state width="1237" height="307" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1576743303869" />
+    <state width="1237" height="307" key="GridCell.Tab.0.right" timestamp="1576743303869">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="450" height="553" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1575983406512" />
-    <state width="450" height="553" key="GridCell.Tab.1.bottom" timestamp="1575983406514">
+    <state width="1237" height="307" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1576743303869" />
+    <state width="450" height="354" key="GridCell.Tab.1.bottom" timestamp="1576395402428">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="450" height="553" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1575983406514" />
-    <state width="450" height="553" key="GridCell.Tab.1.center" timestamp="1575983406514">
+    <state width="450" height="354" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1576395402428" />
+    <state width="450" height="354" key="GridCell.Tab.1.center" timestamp="1576395402428">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="450" height="553" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1575983406514" />
-    <state width="450" height="553" key="GridCell.Tab.1.left" timestamp="1575983406514">
+    <state width="450" height="354" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1576395402428" />
+    <state width="450" height="354" key="GridCell.Tab.1.left" timestamp="1576395402428">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="450" height="553" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1575983406514" />
-    <state width="450" height="553" key="GridCell.Tab.1.right" timestamp="1575983406514">
+    <state width="450" height="354" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1576395402428" />
+    <state width="450" height="354" key="GridCell.Tab.1.right" timestamp="1576395402428">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="450" height="553" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1575983406514" />
+    <state width="450" height="354" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1576395402428" />
     <state width="640" height="175" key="ImportCMakeProjectWizard.bottomPanel" timestamp="1576108881867">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

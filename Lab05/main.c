@@ -61,7 +61,7 @@ int SymbolNeedReplace(const Rule* pCurRule, const RuleSymbol* pSymbol)
         return 0;
 	while (pCurRule != NULL)
     {
-	    // 当前Rule的第一个Symbol对应的Rule出现在后来的Rule中则不需要替换
+	    // 当前Select的第一个Symbol对应的Rule出现在后来的Rule中则不需要替换
 	    if (pSymbol->pRule == pCurRule)
             return 0;
 	    pCurRule = pCurRule->pNextRule;
@@ -297,9 +297,9 @@ void RemoveLeftRecursion(Rule* pHead)
 
 					// 调用 ReplaceSelect 函数，替换 Select 的第一个 Symbol 后得到新的 Selects
 					RuleSymbol* pNewSelects = ReplaceSelect(pSelect);
-					
 
 					// 使用新的 Selects 替换原有的 Select，并调用 FreeSelect 函数释放原有的 Select 内存
+
 					// 将原来Select中的pOther提取出来
                     RuleSymbol* getNewSelect = CopySelect(pSelect->pOther);
                     RuleSymbol* temp = pSelect->pOther;
@@ -319,6 +319,7 @@ void RemoveLeftRecursion(Rule* pHead)
                     strcpy(pSelect->TokenName, pNewSelects->TokenName);
                     FreeSelect(pNewSelects);
 
+                    // 将原来Select中pOther的部分重新加入到Rule中
                     temp = getNewSelect;
                     while (temp != NULL)
                     {

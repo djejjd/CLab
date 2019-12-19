@@ -79,27 +79,31 @@ RuleSymbol* GetSymbol(RuleSymbol* pSelect, int index)
 int LeftFactorMaxLength(RuleSymbol* pSelectTemplate)
 {
 
-    // 模板
+    // 模板Select
     RuleSymbol* template = pSelectTemplate;
     RuleSymbol* pFirstSymbol = template;  // 游标
 
     RuleSymbol* pSelect = pSelectTemplate->pOther;  // 游标
     int length = 0;  // 左因子最大长度
 
+    // 将模板Select与Rule中其他的Select进行比较
     while (pSelect != NULL)
     {
         int i = 0;
 
+        // 将模板Select的每一个Symbol与Rule中其他的Select的Symbol进行比较
         while (GetSymbol(pFirstSymbol, i) != NULL && GetSymbol(pSelect, i) != NULL)
         {
             RuleSymbol* pASymbol = GetSymbol(pFirstSymbol, i);
             RuleSymbol* pBSymbol = GetSymbol(pSelect, i);
+            // 调用SymbolCmp函数，如果相同返回1，不同返回0
             if (SymbolCmp(pASymbol, pBSymbol))
             {
                 i++;
             }
-            else
+            else // 当比较结果不同时候终止循环，并将此时的获得长度与最大长度比较
             {
+                // 取两者较大的部分
                 if (i > length)
                 {
                     length = i;
@@ -107,9 +111,11 @@ int LeftFactorMaxLength(RuleSymbol* pSelectTemplate)
                 break;
             }
         }
+        // 获得下一个Select进行比较
         pSelect = pSelect->pOther;
     }
 
+    // 返回比较结果
     return length;
 
 }
@@ -128,16 +134,20 @@ int LeftFactorMaxLength(RuleSymbol* pSelectTemplate)
 int SymbolCmp(RuleSymbol* pSymbol1, RuleSymbol* pSymbol2)
 {
 
+    // 当两者类型都为终结符
     if (pSymbol1->isToken == 1)
     {
+        // 调用strcmp函数比较其TokenName是否相同
         if (0 == strcmp(pSymbol1->TokenName, pSymbol2->TokenName))
         {
+            // 相同时返回1
             return 1;
         }
 
     }
-    else
+    else // 当两者类型都为非终结符
     {
+        // 调用strcmp函数比较其pRule中的RuleName是否相同
         if (0 == strcmp(pSymbol1->pRule->RuleName, pSymbol2->pRule->RuleName))
         {
             return 1;
@@ -145,6 +155,7 @@ int SymbolCmp(RuleSymbol* pSymbol1, RuleSymbol* pSymbol2)
 
     }
 
+    // 不同时返回0
     return 0;
 
 }
@@ -165,20 +176,25 @@ int NeedPickup(RuleSymbol* pSelectTemplate, int Count, RuleSymbol* pSelect)
 {
 
     int i;
+    // 对其在公共左因子长度范围内的Symbol与模板左因子比较是否需要提取左因子
     for (i=0; i<Count; i++)
     {
+        // 当两个Symbol类型相同时比较内容是否相同
         if (pSelectTemplate->isToken == pSelect->isToken)
         {
+            // 调用SymbolCmp函数进行比较,相同则进行下一个比较
             if (SymbolCmp(pSelectTemplate, pSelect))
             {
                 pSelectTemplate = pSelectTemplate->pNextSymbol;
                 pSelect = pSelect->pNextSymbol;
             }
+            // 不同直接返回0，结束比较
             else
             {
                 return 0;
             }
         }
+        // 若两个Symbol的类型不同，直接返回0，并结束比较
         else
         {
             return 0;
@@ -328,7 +344,7 @@ void PickupLeftFactor(Rule* pHead)
     {
         isChange = 0;
 
-        for(pRule = pHead; pRule != NULL; pRule = pRule->pNextRule)
+        for (pRule = pHead; pRule != NULL; pRule = pRule->pNextRule)
         {
             // 取 Rule 中的一个 Select 作为模板，调用 LeftFactorMaxLength 函数确定左因子的最大长度
             int Count = 0;
@@ -347,8 +363,9 @@ void PickupLeftFactor(Rule* pHead)
             isChange = 1; // 设置标志
 
             // 调用 AddSelectToRule 函数把模板左因子之后的部分加到新 Rule 的末尾
-            pSelect = pSelectTemplate;  // pSelect此时为游标
 
+            pSelect = pSelectTemplate;  // pSelect此时为游标
+            // 获得公共左因子后面的部分
             RuleSymbol* pNewSymbol = GetSymbol(pSelect, Count);
             pNewRule->pFirstSymbol = CopySelect(pNewSymbol);
 
@@ -385,8 +402,8 @@ void PickupLeftFactor(Rule* pHead)
 
 
             // 将新 Rule 加入到文法链表
-
             pRule->pNextRule = pNewRule;
+
         }
 
     } while (isChange == 1);
